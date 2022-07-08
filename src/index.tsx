@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import {Workbox} from "workbox-window";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
+
 import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
 import {HandleAppState} from "./components/HandleAppState";
