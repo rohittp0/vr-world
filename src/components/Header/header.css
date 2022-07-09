@@ -1,6 +1,5 @@
 .nav {
   z-index: 5000;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -19,17 +18,20 @@
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
   font-size: 2vmax;
   margin-left: 4%;
-  width: 100%;
+  /* width: 100%; */
 }
-span {
+.navcont {
   padding: 40px;
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 112%;
+  font-family:sans-serif;
 }
-span:hover {
+svg{
+  width: 100%;
+}
+.navcont:hover {
   cursor: pointer;
   color: #ff1e56;
 }
@@ -48,7 +50,7 @@ span:hover {
     margin-top: .5vh;
     width: 100%;
   }
-  span{
+  .navcont{
     padding: 5px;
     font-size:10px ;
   }

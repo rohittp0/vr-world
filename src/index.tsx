@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
+import Members from "./pages/members/index";
 import {HandleAppState} from "./components/HandleAppState";
 
 const wb = new Workbox("/sw.js");
@@ -26,6 +27,7 @@ function App()
                 <Routes>
                     <Route path="/set_token" element={<HandleToken/>}/>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/members" element={<Members/>} />
                 </Routes>
             </BrowserRouter>
         </>
