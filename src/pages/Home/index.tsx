@@ -1,4 +1,5 @@
 import { useAuth } from "../../api/auth";
+import ContactUs from "../../components/contactUs/ContactUs";
 import Header from "../../components/Header/Header"
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <>
             {/* {user && user.first_name} */}
             <Header></Header>
+            <ContactUs/>
         </>
     );
 }
