@@ -24,7 +24,7 @@ const Footer = () =>
                     <h6 className="prof">Department of meathematics</h6>
                     <h6 className="prof">Cochin university of Science and Technology</h6>
                     <br />
-                    <h6 className="place">sgcusta@gmail.com</h6>
+                    <h6 className="place">sgcusat@gmail.com</h6>
                 </address>
               </div>
             </footer>   

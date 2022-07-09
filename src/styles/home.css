@@ -1,0 +1,58 @@
+.btnpink{
+    background-color:rgba(255, 30, 86, 1) !important;
+}
+.main {
+    padding:0 300px;
+    margin:20px 0;
+}
+.main h2{
+    font-weight:bold;
+}
+
+.description{
+    font-weight:700;
+    margin-top:20px;
+}
+.car{
+    display: flex;
+    justify-content:space-between;
+}
+.head{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.divider{
+    padding:0 30px;
+    background-color:rgba(50, 50, 50, 0.15);
+    height:3px;
+    width: 83%;
+}
+.see{
+    color: rgba(255, 30, 86, 1);
+    text-decoration: none;
+}
+.see:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+@media only screen and (max-width:1200px){
+    .main{
+        padding:0 100px;
+     }
+    }
+@media only screen and (max-width:1000px){
+.main{
+    padding:0 100px;
+ }
+ .car{
+    flex-direction: column;
+ }
+ .divider{
+    width: 50%;
+}
+}
