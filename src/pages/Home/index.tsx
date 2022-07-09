@@ -8,6 +8,7 @@ export default function Home()
 
     return (
         <>
+        <Header></Header>
         <div className="main">
            <h2>Prototyping human interaction</h2>
            <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente doloribus delectus, cupiditate pariatur alias culpa modi iste reprehenderit neque expedita ex saepe quibusdam, cumque dolores! Repellat necessitatibus illo perspiciatis voluptas.
@@ -39,7 +40,6 @@ export default function Home()
             </div>
         </div>
         <Footer/>
-        </>
     );
 }
 
