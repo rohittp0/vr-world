@@ -9,7 +9,7 @@ function ContactUs() {
             <Header />
             <div className="main">
                 <div className="head">
-                    <h2 >Contact Us</h2>
+                    <h2 style={{width:"12rem"}}>Contact Us</h2>
                     <span className="divider"></span>
                 </div>
 
