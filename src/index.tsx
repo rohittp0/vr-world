@@ -9,6 +9,8 @@ import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
 import Members from "./pages/members/index";
 import {HandleAppState} from "./components/HandleAppState";
+import ContactUs from "./pages/contactUs/ContactUs";
+import About from "./pages/about/About";
 
 const wb = new Workbox("/sw.js");
 
@@ -28,6 +30,8 @@ function App()
                     <Route path="/set_token" element={<HandleToken/>}/>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/members" element={<Members/>} />
+                    <Route path="/contact" element={<ContactUs/>} />
+                    <Route path="/about" element={<About/>} />
                 </Routes>
             </BrowserRouter>
         </>
