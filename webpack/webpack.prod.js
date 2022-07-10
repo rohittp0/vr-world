@@ -37,7 +37,7 @@ module.exports = {
                 {from: path.resolve(__dirname, "..", "public/robots.txt")},
                 {
                     from: path.resolve(__dirname, "..", "public/.well-known/"),
-                    to: path.resolve(buildFolder, ".well-known")
+                    to: path.resolve(__dirname, "..", "./build", ".well-known")
                 }
             ]
         }),
