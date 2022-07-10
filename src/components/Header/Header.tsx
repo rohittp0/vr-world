@@ -19,10 +19,10 @@ const Header = () =>
                     <img className="logo" src={Logo} height={100} width={100} alt="logo"/>
                     <i className="fa fa-bars burger"></i>
                     <span className="navcont" onClick={()=>navigate("/")}>Home</span>
-                    <span className="navcont">About</span>
+                    <span className="navcont" onClick={()=>navigate("/about")}>About</span>
                     <span className="navcont">Events</span>
                     <span className="navcont" onClick={()=>navigate("/members")}>Members</span>
-                    <span className="navcont" >Contact</span>
+                    <span className="navcont" onClick={()=>navigate("/contact")}>Contact</span>
                 </div>
                 <svg
                     id="wave"
