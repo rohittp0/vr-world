@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React  from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/Header/Header";
 
 
-function ContactUs() {
+function ContactUs() 
+{
     return (
         <>
             <Header />
@@ -34,7 +35,7 @@ function ContactUs() {
             </div>
             <Footer />
         </>
-    )
+    );
 }
 export default ContactUs;
 

@@ -1,9 +1,10 @@
-import React from 'react'
-import Footer from '../../components/footer/Footer'
-import Header from '../../components/Header/Header'
+import React from "react";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header/Header";
 import "../../styles/about.css";
 
-function About() {
+function About() 
+{
     return (
         <>
             <Header />
@@ -26,7 +27,7 @@ function About() {
             </div>
             <Footer />
         </>
-    )
+    );
 }
 
-export default About
+export default About;
