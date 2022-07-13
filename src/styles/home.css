@@ -27,8 +27,9 @@
 .divider {
   padding: 0 30px;
   background-color: rgba(50, 50, 50, 0.15);
-  height: 3px;
+  height: 2.5px;
   width: 83%;
+  margin-top: 11px;
 }
 .see {
   color: rgba(255, 30, 86, 1);
