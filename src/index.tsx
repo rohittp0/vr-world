@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 
 import HandleToken from "./pages/HandleToken";
-import Home from "./pages/Home";
+import Home from "./pages/Home/index";
 import Members from "./pages/members/index";
 import {HandleAppState} from "./components/HandleAppState";
 import ContactUs from "./pages/contactUs/ContactUs";

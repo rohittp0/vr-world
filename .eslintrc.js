@@ -44,7 +44,7 @@ module.exports = {
     eqeqeq: "error",
     "prefer-const": "error",
     "brace-style": ["error", "allman"],
-    "indent": ["error", 4]
+    // "indent": ["error", 4]
 
   },
 };

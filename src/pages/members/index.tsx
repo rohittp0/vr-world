@@ -91,7 +91,7 @@ export default function CenteredTabs()
                     <span className="divider"></span>
                 </div>
                 <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-                    <Tabs value={value} onChange={handleChange} centered indicatorColor="secondary">
+                    <Tabs value={value} onChange={handleChange} centered indicatorColor="primary">
                         <Tab label="Mentors" />
                         <Tab label="Current Mentors" />
                         <Tab label="Alumnis" />
