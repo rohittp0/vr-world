@@ -20,43 +20,45 @@
   margin-left: 4%;
   /* width: 100%; */
 }
+a {
+  color: white;
+}
 .navcont {
   padding: 40px;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   line-height: 112%;
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
-svg{
+svg {
   width: 100%;
 }
 .navcont:hover {
   cursor: pointer;
   color: #ff1e56;
 }
-.logo{
-    float: left;
-    margin-left: 7%;
+.logo {
+  float: left;
+  margin-left: 7%;
 }
-@media only screen and  (max-width: 768px) {
-  .logo{
+@media only screen and (max-width: 768px) {
+  .logo {
     margin-left: 0%;
     height: 30px;
     width: 30px;
   }
-  .nav-items{
+  .nav-items {
     padding: 10px;
-    margin-top: .5vh;
+    margin-top: 0.5vh;
     width: 100%;
   }
-  .navcont{
+  .navcont {
     padding: 5px;
-    font-size:10px ;
+    font-size: 10px;
   }
-  #wave.viewbox{}
+  #wave.viewbox {
+  }
 }
-
-    
 
 /*  */

@@ -10,6 +10,7 @@ import Members from "./pages/members/index";
 import { HandleAppState } from "./components/HandleAppState";
 import Contact from "./components/contactUs/ContactUs";
 const wb = new Workbox("/sw.js");
+import About from "./pages/about/about";
 
 const isProduction =
   location.hostname !== "localhost" &&
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/members" element={<Members />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </>
