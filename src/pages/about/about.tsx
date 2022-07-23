@@ -1,9 +1,8 @@
 import React from "react";
 import Footer from "../../components/footer/Footer";
-import Header from "../../components/Header/Header";
 import "../../styles/about.css";
-
-function About() {
+import Header from "../../components/Header/Header";
+const About = () => {
   return (
     <>
       <Header />
@@ -48,6 +47,6 @@ function About() {
       <Footer />
     </>
   );
-}
+};
 
 export default About;
