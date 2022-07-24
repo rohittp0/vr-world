@@ -1,6 +1,5 @@
 import "./bootstrap.css";
 
-import ReactDOM from "react-dom";
 import { Workbox } from "workbox-window";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -11,6 +10,7 @@ import { HandleAppState } from "./components/HandleAppState";
 import Contact from "./components/contactUs/ContactUs";
 const wb = new Workbox("/sw.js");
 import About from "./pages/about/about";
+import {createRoot} from "react-dom/client";
 
 const isProduction =
   location.hostname !== "localhost" &&
@@ -19,7 +19,8 @@ const isProduction =
 
 if (isProduction) wb.register().catch(console.error);
 
-function App() {
+function App()
+{
   return (
     <>
       {isProduction && <HandleAppState wb={wb} />}
@@ -36,4 +37,5 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const render = createRoot(document.getElementById("root") as HTMLDivElement);
+render.render(<App />);

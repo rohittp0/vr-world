@@ -1,15 +1,14 @@
-/* eslint-disable eslint-comments/disable-enable-pair */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 import Logo from "./assets/logo.png";
 
-const Header = () => {
+const Header = () =>
+{
   return (
     <>
       <div className="nav">
+        <div id="3root" style={{zIndex: -1}}></div>
         <div className="nav-items">
           <img
             className="logo"
