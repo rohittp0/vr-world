@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import Members from "./pages/members/index";
 import { HandleAppState } from "./components/HandleAppState";
 import Contact from "./components/contactUs/ContactUs";
-const wb = new Workbox("/sw.js");
 import About from "./pages/about/about";
 import {createRoot} from "react-dom/client";
 
@@ -16,6 +15,8 @@ const isProduction =
   location.hostname !== "localhost" &&
   location.protocol !== "http:" &&
   "serviceWorker" in navigator;
+
+const wb = new Workbox("/sw.js");
 
 if (isProduction) wb.register().catch(console.error);
 

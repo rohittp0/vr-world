@@ -5,16 +5,21 @@ import Card from "../../components/card/Card";
 import Header from "../../components/Header/Header";
 
 import Game from "../../utils/game";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {Blogs, EventObject, Events} from "../../api/model";
 
 export default function Home()
 {
+    const [events, setEvents] = useState<EventObject[]>([]);
+    const [blogs, setBlogs] = useState<EventObject[]>([]);
+
     useEffect(() =>
     {
         new Game();
-        }, [document.getElementById("3root")]);
+        Events.filter({}).then(({results}) => setEvents(results));
+        Blogs.filter({}).then(({results}) => setBlogs(results));
+    }, [document.getElementById("3root")]);
 
-    const URL = "https://s3-alpha-sig.figma.com/img/2a33/455f/5640245b9824616aa597ba4744dec2ed?Expires=1658102400&Signature=B77hkqEoTyF3f-nr42NdPLFa7PNrtOyjgFdq0DQGRtwFOSVO8-oAS6Q9kqD-aB6d00m1B5UdJ9d2oEBsHAxZrv1CO~g7TsQE8I4GFGsx285d~rDG66BlyrwkEtsXL6v8Xlhrf5~lW45aalNbo0NYzZwW8dQ55ZaQe73VTKnci-KxfSH93n7GFvp6EM6oCfRnWE2OatXm5Eb6Qs~tqYemgZLuNz16pQ2PrPAdu50P-cI0ijN6UygXJ56rQXdVQBOFRlHEhBG01Zp-VXz3IHpbko8hsqvxgGuF-5qZg6j~XlEQnPAd3MKR6soQkYmOsR6JRexBxkdUdx7zLrkn5llU0g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA";
 
     return (
         <>
@@ -32,12 +37,9 @@ export default function Home()
                     <span className="see">see all</span>
                 </div>
                 <div className="car">
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
+                    {events.map((event, i) =>
+                        <Card img={event.cover} alt="college" key={i}
+                              info={event.intro}/>)}
                 </div>
             </div>
             <div className="info main">
@@ -47,12 +49,9 @@ export default function Home()
                     <span className="see">see all</span>
                 </div>
                 <div className="car">
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
-                    <Card img={URL} alt="college"
-                          info="amazing and cool college i recomend you guys to come here and study"/>
+                    {blogs.map((event, i) =>
+                        <Card img={event.cover} alt="college" key={i}
+                              info={event.intro}/>)}
                 </div>
             </div>
             <Footer/>
