@@ -3,6 +3,7 @@ import {AnimationObjectGroup, DirectionalLight, HemisphereLight, Material, Objec
 import {FBXLoader} from "three/examples/jsm/loaders/FBXLoader";
 import {JoyStick} from "./toon3d";
 
+let done = false;
 
 export default class Game
 {

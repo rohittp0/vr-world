@@ -3,7 +3,7 @@ import "./header.css";
 import { Link } from "react-router-dom";
 import Logo from "./assets/logo.png";
 
-const Header = () =>
+const Header = ({hidePath}: {hidePath?: boolean}) =>
 {
   return (
     <>
@@ -36,7 +36,7 @@ const Header = () =>
         </div>
         <svg
           id="wave"
-          style={{ transform: "rotate(180deg)", transition: "0.3s" }}
+          style={{ transform: "rotate(180deg)", transition: "0.3s", display: hidePath ? "none" : "initial" }}
           viewBox="0 0 1340 305"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"

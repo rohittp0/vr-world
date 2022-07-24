@@ -365,7 +365,7 @@ export class JoyStick {
         const thumb = document.createElement("div");
         thumb.style.cssText = "position: absolute; left: 20px; top: 20px; width: 40px; height: 40px; border-radius: 50%; background: #fff;";
         circle.appendChild(thumb);
-        document.body.appendChild(circle);
+        document.getElementById("3root").appendChild(circle);
         this.domElement = thumb;
         this.maxRadius = options.maxRadius || 40;
         this.maxRadiusSquared = this.maxRadius * this.maxRadius;

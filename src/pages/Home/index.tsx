@@ -16,10 +16,22 @@ export default function Home()
 
     const navigate = useNavigate();
 
+    const root3 = document.getElementById("3root");
+
     useEffect(() =>
     {
         new Game();
-    }, [document.getElementById("3root")]);
+        if(root3)
+        {
+            if(root3.children.length > 1)
+                root3.removeChild(root3.children[0]);
+        }
+        return () =>
+        {
+            if(root3)
+                root3.innerHTML = "";
+        };
+    }, [root3]);
 
     useEffect(() =>
     {
@@ -30,7 +42,7 @@ export default function Home()
 
     return (
         <>
-            <Header/>
+            <Header hidePath={true}/>
             <div className="main">
                 <h2>Prototyping human interaction</h2>
                 <p className="description">dquidem laudantium magni. Blanditiis suscipit aliquam totam impedit corrupti
