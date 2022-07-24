@@ -7,18 +7,25 @@ import Header from "../../components/Header/Header";
 import Game from "../../utils/game";
 import {useEffect, useState} from "react";
 import {Blogs, EventObject, Events} from "../../api/model";
+import {useNavigate} from "react-router-dom";
 
 export default function Home()
 {
     const [events, setEvents] = useState<EventObject[]>([]);
     const [blogs, setBlogs] = useState<EventObject[]>([]);
 
+    const navigate = useNavigate();
+
     useEffect(() =>
     {
         new Game();
+    }, [document.getElementById("3root")]);
+
+    useEffect(() =>
+    {
         Events.filter({}).then(({results}) => setEvents(results));
         Blogs.filter({}).then(({results}) => setBlogs(results));
-    }, [document.getElementById("3root")]);
+    }, []);
 
 
     return (
@@ -51,6 +58,7 @@ export default function Home()
                 <div className="car">
                     {blogs.map((event, i) =>
                         <Card img={event.cover} alt="college" key={i}
+                              onClick={() => navigate(`/blogs/${event.id}`)}
                               info={event.intro}/>)}
                 </div>
             </div>

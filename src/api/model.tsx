@@ -47,6 +47,7 @@ export class BlogObject extends ModelObject
 {
     cover: string;
     intro: string;
+    html?: string;
 
     constructor(data: Record<string, string | number>, baseUrl: string)
     {
@@ -55,14 +56,14 @@ export class BlogObject extends ModelObject
         this.cover = "";
         this.intro = "";
 
-        this.fields = ["id", "cover", "intro"];
+        this.fields = ["id", "cover", "intro", "html"];
         this.getData();
     }
 }
 
 export const Example = new Model(baseUrl + "/api/marker/", ExampleObject);
-export const Events = new Model(baseUrl + "/api/event/", EventObject);
-export const Blogs = new Model(baseUrl + "/api/blog/", BlogObject);
+export const Events = new Model(baseUrl + "/api/events/", EventObject);
+export const Blogs = new Model(baseUrl + "/api/blogs/", BlogObject);
 
-export type ModelRegistry = typeof ExampleObject | typeof EventObject;
+export type ModelRegistry = typeof ExampleObject | typeof EventObject | typeof BlogObject;
 

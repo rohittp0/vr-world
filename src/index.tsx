@@ -9,6 +9,7 @@ import Members from "./pages/members/index";
 import { HandleAppState } from "./components/HandleAppState";
 import Contact from "./components/contactUs/ContactUs";
 import About from "./pages/about/about";
+import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
 
 const isProduction =
@@ -32,6 +33,7 @@ function App()
           <Route path="/members" element={<Members />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blogs/:id" element={<Blog />} />
         </Routes>
       </BrowserRouter>
     </>
