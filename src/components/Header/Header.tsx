@@ -8,7 +8,7 @@ const Header = ({hidePath}: {hidePath?: boolean}) =>
   return (
     <>
       <div className="nav">
-        <div id="3root" style={{zIndex: 90}}></div>
+        <div id="3root" style={{zIndex: 90, overflow: "hidden"}}></div>
         <div className="nav-items">
           <img
             className="logo"
