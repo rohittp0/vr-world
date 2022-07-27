@@ -360,7 +360,7 @@ export class SFX {
 
 export class JoyStick {
     private game: any;
-    constructor(options: { maxRadius: number; onMove: any; game: any; rotationDamping: number; moveDamping: number; }) {
+    constructor(options: { maxRadius: number; onMove: any; game: any; }) {
         const circle = document.createElement("div");
         circle.style.cssText = "position:absolute; bottom:35px; width:80px; height:80px; background:rgba(126, 126, 126, 0.5); border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
         const thumb = document.createElement("div");
@@ -373,8 +373,6 @@ export class JoyStick {
         this.onMove = options.onMove;
         this.game = options.game;
         this.origin = {left: this.domElement.offsetLeft, top: this.domElement.offsetTop};
-        this.rotationDamping = options.rotationDamping || 0.06;
-        this.moveDamping = options.moveDamping || 0.01;
         if (this.domElement != undefined) {
             const joystick = this;
             if ("ontouchstart" in window)
