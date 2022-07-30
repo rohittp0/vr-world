@@ -1,7 +1,17 @@
-.end{
-    display:flex;
-    justify-content:flex-end;
+.end {
+  display: flex;
+  justify-content: flex-end;
 }
-.mt{
-    margin-top:20px !important;
+.mt {
+  margin-top: 20px !important;
 }
+.main h1 {
+  font-weight: bold;
+  font-size: 3rem;
+
+}
+/* @media only screen and (max-width: 766px){
+    .main h1{
+      font-size: 2rem;
+    }
+  } */

@@ -7,7 +7,7 @@ import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
 import Members from "./pages/members/index";
 import { HandleAppState } from "./components/HandleAppState";
-import Contact from "./components/contactUs/ContactUs";
+import Contact from "./pages/contactUs/ContactUs";
 import About from "./pages/about/about";
 import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";

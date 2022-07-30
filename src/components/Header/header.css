@@ -42,6 +42,36 @@ svg {
   float: left;
   margin-left: 7%;
 }
+@media only screen and (min-width: 766px) and (max-width: 864px) {
+  .logo {
+    margin-left: 0%;
+    height: 40px;
+    width: 40px;
+  }
+
+  .navcont {
+    padding: 14px;
+  }
+  .nav-items {
+    margin-top: 2.7vh;
+  }
+}
+@media only screen and (min-width: 864px) and (max-width: 988px) {
+  .logo {
+    margin-left: 0%;
+    height: 60px;
+    width: 60px;
+  }
+  .nav-items {
+    padding: 5px;
+  }
+  .navcont {
+    padding: 14px;
+  }
+  .nav-items {
+    margin-top: 2.7vh;
+  }
+}
 @media only screen and (max-width: 768px) {
   .logo {
     margin-left: 0%;
