@@ -1,4 +1,4 @@
-import {getAuth} from "./auth";
+import {getAuth} from "./authUtils";
 import {ModelRegistry} from "./model";
 
 export const baseUrl = process.env.BASE_URL;
@@ -204,7 +204,7 @@ export default class Model
 
 
             const data = await get(`${this.baseurl}`, kwargs, headers);
-            const lst = data.results.map((item: unknown) => new this.modelClass(item, this.baseurl));
+            const lst = data.results.map((item: Record<string, string>) => new this.modelClass(item, this.baseurl));
             return {results: lst, next: data.next};
         }
         catch (e)
@@ -223,7 +223,7 @@ export default class Model
                 headers = {"Authorization": `Bearer ${getAuth()}`};
 
             const data = await get(`${this.baseurl}${path}`, kwargs, headers);
-            const lst = data.results.map((item: unknown) => new this.modelClass(item, this.baseurl));
+            const lst = data.results.map((item: Record<string, string>) => new this.modelClass(item, this.baseurl));
 
             return {results: lst, next: data.next};
         }

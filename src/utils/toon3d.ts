@@ -359,21 +359,20 @@ export class SFX {
 }
 
 export class JoyStick {
-    constructor(options) {
+    private game: any;
+    constructor(options: { maxRadius: number; onMove: any; game: any; }) {
         const circle = document.createElement("div");
         circle.style.cssText = "position:absolute; bottom:35px; width:80px; height:80px; background:rgba(126, 126, 126, 0.5); border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
         const thumb = document.createElement("div");
         thumb.style.cssText = "position: absolute; left: 20px; top: 20px; width: 40px; height: 40px; border-radius: 50%; background: #fff;";
         circle.appendChild(thumb);
-        document.body.appendChild(circle);
+        document.getElementById("3root").appendChild(circle);
         this.domElement = thumb;
         this.maxRadius = options.maxRadius || 40;
         this.maxRadiusSquared = this.maxRadius * this.maxRadius;
         this.onMove = options.onMove;
         this.game = options.game;
         this.origin = {left: this.domElement.offsetLeft, top: this.domElement.offsetTop};
-        this.rotationDamping = options.rotationDamping || 0.06;
-        this.moveDamping = options.moveDamping || 0.01;
         if (this.domElement != undefined) {
             const joystick = this;
             if ("ontouchstart" in window)
