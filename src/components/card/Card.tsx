@@ -7,12 +7,13 @@ interface CardInfo {
    info: string;
    mail?: string;
    name?: string;
+   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Card = ({img, alt, info, name, mail}:CardInfo) => 
+const Card = ({img, alt, info, name, mail, onClick}:CardInfo) =>
 {
   return (
-    <div className="cont">
+    <div className="cont" onClick={onClick}>
         <img src={img} alt={alt}  className="imgCard"/>
         <h6>{name}</h6>
         <h6>{info}</h6>

@@ -6,6 +6,9 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
+const buildFolder = path.resolve(__dirname, "..", "./build");
+
+
 module.exports = {
     mode: "production",
     devtool: "source-map",

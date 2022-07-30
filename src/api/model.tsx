@@ -1,11 +1,11 @@
-import Model, {baseUrl, filePost, ModelData,  ModelObject} from "./api";
-import {getAuth} from "./auth";
+import Model, {baseUrl, filePost,  ModelObject} from "./api";
+import {getAuth} from "./authUtils";
 
 
-export class ExampleObject extends ModelObject 
+export class ExampleObject extends ModelObject
 {
 
-    constructor(data: ModelData, baseUrl: string) 
+    constructor(data: Record<string, string | number>, baseUrl: string)
     {
 
         super(data, baseUrl);
@@ -26,7 +26,44 @@ export class ExampleObject extends ModelObject
     }
 }
 
-export const Example = new Model(baseUrl + "/api/marker/", ExampleObject);
+export class EventObject extends ModelObject
+{
+    cover: string;
+    intro: string;
 
-export type ModelRegistry = typeof ExampleObject;
+    constructor(data: Record<string, string | number>, baseUrl: string)
+    {
+        super(data, baseUrl);
+
+        this.cover = "";
+        this.intro = "";
+
+        this.fields = ["id", "cover", "intro"];
+        this.getData();
+    }
+}
+
+export class BlogObject extends ModelObject
+{
+    cover: string;
+    intro: string;
+    html?: string;
+
+    constructor(data: Record<string, string | number>, baseUrl: string)
+    {
+        super(data, baseUrl);
+
+        this.cover = "";
+        this.intro = "";
+
+        this.fields = ["id", "cover", "intro", "html"];
+        this.getData();
+    }
+}
+
+export const Example = new Model(baseUrl + "/api/marker/", ExampleObject);
+export const Events = new Model(baseUrl + "/api/events/", EventObject);
+export const Blogs = new Model(baseUrl + "/api/blogs/", BlogObject);
+
+export type ModelRegistry = typeof ExampleObject | typeof EventObject | typeof BlogObject;
 

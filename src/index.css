@@ -131,3 +131,8 @@ input[type="reset"] {
 .MuiStepIcon-root.MuiStepIcon-completed {
   color: #4caf50 !important;
 }
+
+.des {
+  margin: 20px;
+  color: grey;
+}

@@ -1,0 +1,20 @@
+.head {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.strip {
+  color: red;
+  background-color: red;
+  height: 4px;
+  width: 40%;
+}
+
+.main h2 {
+  font-weight: bold;
+}
+
+.main h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
