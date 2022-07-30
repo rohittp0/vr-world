@@ -10,7 +10,7 @@ const About = () =>
             <Header/>
             <div className="main">
                 <div className="head">
-                    <h1>About</h1>
+                    <h1 style={{width:"10px"}}>About</h1>
                     <span className="divider" style={{width: "100%"}}></span>
                 </div>
                 <p className="des mt-3" >

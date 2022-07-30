@@ -87,7 +87,7 @@ export default function CenteredTabs()
                     <Button variant="contained" className="btnpink">Join Now</Button>
                 </div>
                 <div className="head">
-                    <h2>Members</h2>
+                    <h1>Members</h1>
                     <span className="divider"></span>
                 </div>
                 <Box sx={{ width: "100%", bgcolor: "background.paper" }}>

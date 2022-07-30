@@ -29,6 +29,7 @@
   background-color: rgba(50, 50, 50, 0.15);
   height: 3px;
   width: 83%;
+  margin-top: 17px;
 }
 .see {
   color: rgba(255, 30, 86, 1);
@@ -51,7 +52,7 @@
 }
 @media only screen and (max-width: 700px) {
   .main {
-    padding: 0 60px;
+    padding: 0 50px;
   }
   .car {
     flex-direction: column;
@@ -59,7 +60,10 @@
     align-items: center;
   }
   .divider {
-    width: 50%;
+    width: 80%;
+  }
+  .head {
+    margin: 16px;
   }
 }
 @media only screen and (max-width: 400px) {
