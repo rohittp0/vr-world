@@ -6,8 +6,6 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-const buildFolder = path.resolve(__dirname, "..", "./build");
-
 
 module.exports = {
     mode: "production",
@@ -15,9 +13,9 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new WebpackPwaManifest({
-            name: "Need Medi",
-            short_name: "Need Medi",
-            description: "Facebook for doctors.",
+            name: "XR Lab CUSAT",
+            short_name: "XR Lab",
+            description: "A adipoli lab",
             background_color: "#FFFFFF",
             orientation: "any",
             theme_color: "#3E64FF",
@@ -25,7 +23,7 @@ module.exports = {
             "gcm_sender_id": "569002618626",
             icons: [
                 {
-                    src: path.resolve(__dirname, "..", "public/android-chrome-512x512.png"),
+                    src: path.resolve(__dirname, "..", "public/android-chrome-96x96.png"),
                     sizes: [96, 128, 192, 256, 384, 512]
                 },
                 {
