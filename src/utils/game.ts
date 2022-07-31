@@ -2,20 +2,24 @@ import * as THREE from "three";
 import {FBXLoader} from "three/examples/jsm/loaders/FBXLoader";
 import {JoyStick} from "./toon3d";
 
+
+const animationNameMap: Record<string, string> = {
+    "Walking" : "walkAnim",
+    "Idle" : "idleAnim",
+    "Running" : "runAnim",
+    "Turn" : "jumpAnim",
+    "Walking Backwards": "jumpAnim"
+};
+
 export default class Game
 {
-    private step = 300;
-    private readonly MAX_STEP = 400;
-
     private readonly container: HTMLDivElement;
     private readonly model;
     private readonly scene: THREE.Scene;
     private readonly camera: THREE.PerspectiveCamera;
     private renderer: THREE.WebGLRenderer;
     private mixer?: THREE.AnimationMixer;
-    private readonly animationActions?: THREE.AnimationAction[];
-    private activeAction?: THREE.AnimationAction;
-    private lastAction?: THREE.AnimationAction;
+
     private clock: THREE.Clock;
     private motion = {forward: 0, turn: 0};
     private cameras?: {
@@ -27,6 +31,9 @@ export default class Game
         active: THREE.Object3D;
     };
     private activeCamera?: THREE.Object3D;
+    private actionTime = 0;
+    private actionName = "";
+    private animations: Record<string, THREE.AnimationClip> = {};
 
     constructor()
     {
@@ -57,10 +64,11 @@ export default class Game
                 }
             } );
 
-            // const animationAction = this.mixer.clipAction((object as THREE.Object3D).animations[0]);
-            // this.animationActions.push(animationAction);
-            // this.activeAction = this.animationActions[0];
-            // this.lastAction = this.animationActions[0];
+            const animationAction = (object as THREE.Object3D).animations;
+
+            animationAction.forEach((clip) => this.animations[clip.name] = clip);
+
+            console.log(Object.keys(this.animations));
 
             this.scene.add(object);
 
@@ -105,7 +113,7 @@ export default class Game
             this.render();
         });
 
-        new JoyStick({maxRadius: 40, onMove: this.moved, game: this});
+        new JoyStick({maxRadius: 40, onMove: this.move, game: this});
 
         this.animate().then();
         this.scene.add(new THREE.AxesHelper());
@@ -114,36 +122,31 @@ export default class Game
         this.createCameras().then();
     }
 
-    private moved(forward: number, turn: number)
+    private async move(forward: number, turn: number)
     {
         turn = -turn;
 
+        if (forward>0.3)
+        {
+            if (this.action!=="Walking" && this.action!=="Running") this.action = "Walking";
+        }
+        else if (forward<-0.3)
+        {
+            if (this.action !== "Walking Backwards") this.action = "Walking Backwards";
+        }
+        else
+        {
+            forward = 0;
+            if (Math.abs(turn)>0.1)
+            {
+                if (this.action !== "Turn") this.action = "Turn";
+            }
+            else if (this.action!=="Idle")
+                this.action = "Idle";
+
+        }
+
         this.motion = { forward, turn };
-
-        console.log(this.motion)
-    }
-
-    private async move(dt: number)
-    {
-        const model = await this.model;
-
-        const pos = model.position.clone();
-        pos.y += 60;
-
-        const dir = new THREE.Vector3();
-        model.getWorldDirection(dir);
-
-        if (this.motion.forward<0) dir.negate();
-
-        if (this.motion.forward>0)
-            model.translateZ(dt*this.step);
-        else if(this.motion.forward<0)
-            model.translateZ(-dt*30);
-
-        if(this.step > this.MAX_STEP)
-            this.step = this.MAX_STEP;
-
-        model.rotateY(this.motion.turn*dt);
     }
 
     async animate()
@@ -154,9 +157,13 @@ export default class Game
 
         this.mixer?.update(dt);
 
-        if (this.motion !== undefined) await this.move(dt);
+        if (this.action === "Walking" && Date.now() - this.actionTime > 1000 && this.motion.forward > 0)
+            this.action = "Running";
 
-        if (this.cameras !== undefined && this.cameras.active !== undefined)
+        if (this.motion !== undefined)
+            await this.movePlayer(dt);
+
+        if (this.cameras && this.cameras.active)
         {
             this.camera.position.lerp(this.cameras.active.getWorldPosition(new THREE.Vector3()), 0.05);
             const pos = (await this.model).position.clone();
@@ -164,7 +171,32 @@ export default class Game
             this.camera.lookAt(pos);
         }
 
+
         this.renderer.render( this.scene, this.camera );
+    }
+
+    async movePlayer(dt: number)
+    {
+        if(this.motion.forward + this.motion.turn === 0)
+            return;
+
+        const pos = (await this.model).position.clone();
+        const dir = new THREE.Vector3();
+
+        pos.y += 60;
+
+        (await this.model).getWorldDirection(dir);
+
+        if (this.motion.forward < 0) dir.negate();
+        if (this.motion.forward > 0)
+        {
+            const speed = this.action === "Running" ? 400 : 150;
+            (await this.model).translateZ(dt * speed);
+        }
+        else
+            (await this.model).translateZ(-dt * 30);
+
+        (await this.model).rotateY(this.motion.turn * dt);
     }
 
     private render()
@@ -172,19 +204,28 @@ export default class Game
         this.renderer.render(this.scene, this.camera);
     }
 
-    setAction = (toAction: THREE.AnimationAction) =>
+    set action(name)
     {
-        if (toAction !== this.activeAction)
+        if(this.mixer)
         {
-            this.lastAction = this.activeAction;
-            this.activeAction = toAction;
-            this.lastAction?.stop();
-            this.lastAction?.fadeOut(1);
-            this.activeAction.reset();
-            this.activeAction.fadeIn(1);
-            this.activeAction.play();
+            const animationCode = animationNameMap[name];
+            const action = this.mixer.clipAction(this.animations[animationCode]);
+
+            action.time = 0;
+            this.mixer.stopAllAction();
+            this.actionTime = Date.now();
+
+            action.fadeIn(0.5);
+            action.play();
         }
-    };
+
+        this.actionName = name;
+    }
+
+    get action()
+    {
+        return this.actionName;
+    }
 
     async createCameras()
     {
