@@ -5,7 +5,7 @@ import {getAuth} from "./authUtils";
 export class ExampleObject extends ModelObject
 {
 
-    constructor(data: Record<string, string | number>, baseUrl: string)
+    constructor(data: Record<string, string | number>, baseUrl = "")
     {
 
         super(data, baseUrl);
@@ -28,28 +28,26 @@ export class ExampleObject extends ModelObject
 
 export class EventObject extends ModelObject
 {
-    cover: string;
-    intro: string;
+    cover = "";
+    intro = "";
+    title = "";
 
-    constructor(data: Record<string, string | number>, baseUrl: string)
+    constructor(data: Record<string, string | number>, baseUrl = "")
     {
         super(data, baseUrl);
 
-        this.cover = "";
-        this.intro = "";
-
-        this.fields = ["id", "cover", "intro"];
+        this.fields = ["id", "cover", "intro", "title"];
         this.getData();
     }
 }
 
 export class BlogObject extends ModelObject
 {
-    cover: string;
-    intro: string;
-    html?: string;
+    cover = "";
+    intro = "";
+    html? = "";
 
-    constructor(data: Record<string, string | number>, baseUrl: string)
+    constructor(data: Record<string, string | number>, baseUrl = "")
     {
         super(data, baseUrl);
 

@@ -4,11 +4,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "../../styles/members.css";
 import Footer from "../../components/footer/Footer";
-import { Button } from "@mui/material";
+import {Button} from "@mui/material";
 import Header from "../../components/Header/Header";
 import Mentor from "../../components/card/Mentor";
 import Card from "../../components/card/Card";
 import Table from "../../components/Table/Table";
+import {Link} from "react-router-dom";
 
 
 
@@ -84,11 +85,13 @@ export default function CenteredTabs()
             <Header />
             <div className="main">
                 <div className="end">
+                    <Link to={"/login"}>
                     <Button variant="contained" className="btnpink">Join Now</Button>
+                    </Link>
                 </div>
                 <div className="head">
                     <h1>Members</h1>
-                    <span className="divider"></span>
+                    <span className="divider"/>
                 </div>
                 <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
                     <Tabs value={value} onChange={handleChange} centered indicatorColor="primary">

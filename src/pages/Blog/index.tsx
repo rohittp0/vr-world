@@ -30,7 +30,7 @@ export default function Blog()
     return (
         <>
             <Header/>
-            <div ref={rootRef as LegacyRef<HTMLDivElement>} className="blog"></div>
+            <div ref={rootRef as LegacyRef<HTMLDivElement>} className="blog"/>
             <Footer/>
         </>);
 }

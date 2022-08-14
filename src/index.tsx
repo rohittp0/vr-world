@@ -11,6 +11,7 @@ import Contact from "./pages/contactUs/ContactUs";
 import About from "./pages/about/about";
 import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
+import Login from "./pages/login";
 
 const isProduction =
   location.hostname !== "localhost" &&
@@ -31,6 +32,7 @@ function App()
           <Route path="/set_token" element={<HandleToken />} />
           <Route path="/" element={<Home />} />
           <Route path="/members" element={<Members />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs/:id" element={<Blog />} />

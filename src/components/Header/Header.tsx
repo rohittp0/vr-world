@@ -49,19 +49,22 @@ const Header = ({hidePath}: { hidePath?: boolean }) =>
                         />
                         <i className="fa fa-bars burger"/>
                         <Link to="/">
-                            <span className="navcont">home</span>
+                            <span className="navcont">Home</span>
                         </Link>
                         <Link to="/about">
                             <span className="navcont">About</span>
                         </Link>
-                        {/* <Link to="/events">
-            <span className="navcont">Events</span>
-          </Link> */}
+                        <a href="#events">
+                            <span className="navcont">Events</span>
+                        </a>
+                        <a href="#blogs">
+                            <span className="navcont">Blog</span>
+                        </a>
                         <Link to="/members">
-                            <span className="navcont">members</span>
+                            <span className="navcont">Members</span>
                         </Link>
-                        <Link to="/contact">
-                            <span className="navcont">contact</span>
+                        <Link to="/Contact">
+                            <span className="navcont">Contact</span>
                         </Link>
                     </div>
                 }
