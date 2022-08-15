@@ -1,0 +1,19 @@
+.formcont
+{
+    text-align: center;
+  position: absolute;
+    margin: auto;
+  align-items: center;
+    margin-right: 100px;
+    padding-bottom: 50px;
+}
+.welcome
+{
+    font-family: Source Sans Pro;
+    font-weight: bolder;
+}
+.container
+{
+    font-family: Source Sans Pro;
+    text-align: left;
+}
