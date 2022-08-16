@@ -4,7 +4,8 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/Header/Header";
 import "../../styles/contact.css";
 
-const ContactUs = () => {
+const ContactUs = () => 
+{
   return (
     <>
       <Header />

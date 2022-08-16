@@ -5,7 +5,8 @@ import React from "react";
 import Footer from "../../components/footer/Footer";
 import "./index.css";
 
-export default function Login() {
+export default function Login() 
+{
     return (
         <>
             <Header/>

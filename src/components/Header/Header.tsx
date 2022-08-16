@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Logo from "./assets/logo.png";
 import Sidebar from "../sidebar/Sidebar";
 
-const Header = ({hidePath}: { hidePath?: boolean }) =>
+export default function Home({hidePath}: { hidePath?: boolean })
 {
     const [windowSize, setWindowSize] = useState(getWindowSize());
 
@@ -17,10 +17,7 @@ const Header = ({hidePath}: { hidePath?: boolean }) =>
 
         window.addEventListener("resize", handleWindowResize);
 
-        return () =>
-        {
-            window.removeEventListener("resize", handleWindowResize);
-        };
+        return () => window.removeEventListener("resize", handleWindowResize);
     }, []);
 
     function getWindowSize()
@@ -54,10 +51,10 @@ const Header = ({hidePath}: { hidePath?: boolean }) =>
                         <Link to="/about">
                             <span className="navcont">About</span>
                         </Link>
-                        <a href="#events">
+                        <a href="/#events">
                             <span className="navcont">Events</span>
                         </a>
-                        <a href="#blogs">
+                        <a href="/#blogs">
                             <span className="navcont">Blog</span>
                         </a>
                         <Link to="/members">
@@ -91,5 +88,4 @@ const Header = ({hidePath}: { hidePath?: boolean }) =>
             </div>
         </div>
     );
-};
-export default Header;
+}

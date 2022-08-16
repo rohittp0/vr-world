@@ -1,6 +1,8 @@
-export class Easing {
+export class Easing 
+{
     // t: current time, b: begInnIng value, c: change In value, d: duration
-    constructor(start, end, duration, startTime = 0, type = "linear") {
+    constructor(start, end, duration, startTime = 0, type = "linear") 
+{
         this.b = start;
         this.c = end - start;
         this.d = duration;
@@ -8,39 +10,48 @@ export class Easing {
         this.startTime = startTime;
     }
 
-    value(time) {
+    value(time) 
+{
         this.t = time - this.startTime;
         return this[this.type]();
     }
 
-    linear() {
+    linear() 
+{
         return this.c * (this.t / this.d) + this.b;
     }
 
-    inQuad() {
+    inQuad() 
+{
         return this.c * (this.t /= this.d) * this.t + this.b;
     }
 
-    outQuad() {
+    outQuad() 
+{
         return -this.c * (this.t /= this.d) * (this.t - 2) + this.b;
     }
 
-    inOutQuad() {
+    inOutQuad() 
+{
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * this.t * this.t + this.b;
         return -this.c / 2 * ((--this.t) * (this.t - 2) - 1) + this.b;
     }
 
-    projectile() {
+    projectile() 
+{
         const c = this.c;
         const b = this.b;
         const t = this.t;
         this.t *= 2;
         let result;
         let func;
-        if (this.t < this.d) {
+        if (this.t < this.d) 
+{
             result = this.outQuad();
             func = "outQuad";
-        } else {
+        }
+ else 
+{
             this.t -= this.d;
             this.b += c;
             this.c = -c;
@@ -54,149 +65,184 @@ export class Easing {
         return result;
     }
 
-    inCubic() {
+    inCubic() 
+{
         return this.c * (this.t /= this.d) * this.t * this.t + this.b;
     }
 
-    outCubic() {
+    outCubic() 
+{
         return this.c * ((this.t = this.t / this.d - 1) * this.t * this.t + 1) + this.b;
     }
 
-    inOutCubic() {
+    inOutCubic() 
+{
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * this.t * this.t * this.t + this.b;
         return this.c / 2 * ((this.t -= 2) * this.t * this.t + 2) + this.b;
     }
 
-    inQuart() {
+    inQuart() 
+{
         return this.c * (this.t /= this.d) * this.t * this.t * this.t + this.b;
     }
 
-    outQuart() {
+    outQuart() 
+{
         return -this.c * ((this.t = this.t / this.d - 1) * this.t * this.t * this.t - 1) + this.b;
     }
 
-    inOutQuart() {
+    inOutQuart() 
+{
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * this.t * this.t * this.t * this.t + this.b;
         return -this.c / 2 * ((this.t -= 2) * this.t * this.t * this.t - 2) + this.b;
     }
 
-    inQuint() {
+    inQuint() 
+{
         return this.c * (this.t /= this.d) * this.t * this.t * this.t * this.t + this.b;
     }
 
-    outQuint() {
+    outQuint() 
+{
         return this.c * ((this.t = this.t / this.d - 1) * this.t * this.t * this.t * this.t + 1) + this.b;
     }
 
-    inOutQuint() {
+    inOutQuint() 
+{
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * this.t * this.t * this.t * this.t * this.t + this.b;
         return this.c / 2 * ((this.t -= 2) * this.t * this.t * this.t * this.t + 2) + this.b;
     }
 
-    inSine() {
+    inSine() 
+{
         return -this.c * Math.cos(this.t / this.d * (Math.PI / 2)) + this.c + this.b;
     }
 
-    outSine() {
+    outSine() 
+{
         return this.c * Math.sin(this.t / this.d * (Math.PI / 2)) + this.b;
     }
 
-    inOutSine() {
+    inOutSine() 
+{
         return -this.c / 2 * (Math.cos(Math.PI * this.t / this.d) - 1) + this.b;
     }
 
-    inExpo() {
+    inExpo() 
+{
         return (this.t == 0) ? this.b : this.c * Math.pow(2, 10 * (this.t / this.d - 1)) + this.b;
     }
 
-    outExpo() {
+    outExpo() 
+{
         return (this.t == this.d) ? this.b + this.c : this.c * (-Math.pow(2, -10 * this.t / this.d) + 1) + this.b;
     }
 
-    inOutExpo() {
+    inOutExpo() 
+{
         if (this.t == 0) return this.b;
         if (this.t == this.d) return this.b + this.c;
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * Math.pow(2, 10 * (this.t - 1)) + this.b;
         return this.c / 2 * (-Math.pow(2, -10 * --this.t) + 2) + this.b;
     }
 
-    inCirc() {
+    inCirc() 
+{
         return -this.c * (Math.sqrt(1 - (this.t /= this.d) * this.t) - 1) + this.b;
     }
 
-    outCirc() {
+    outCirc() 
+{
         return this.c * Math.sqrt(1 - (this.t = this.t / this.d - 1) * this.t) + this.b;
     }
 
-    inOutCirc() {
+    inOutCirc() 
+{
         if ((this.t /= this.d / 2) < 1) return -this.c / 2 * (Math.sqrt(1 - this.t * this.t) - 1) + this.b;
         return this.c / 2 * (Math.sqrt(1 - (this.t -= 2) * this.t) + 1) + this.b;
     }
 
-    inElastic() {
+    inElastic() 
+{
         let s = 1.70158, p = 0, a = this.c;
         if (this.t == 0) return this.b;
         if ((this.t /= this.d) == 1) return this.b + this.c;
         if (!p) p = this.d * .3;
-        if (a < Math.abs(this.c)) {
+        if (a < Math.abs(this.c)) 
+{
             a = this.c;
             const s = p / 4;
-        } else {
+        }
+ else 
+{
             const s = p / (2 * Math.PI) * Math.asin(this.c / a);
         }
         return -(a * Math.pow(2, 10 * (this.t -= 1)) * Math.sin((this.t * this.d - s) * (2 * Math.PI) / p)) + this.b;
     }
 
-    outElastic() {
+    outElastic() 
+{
         let s = 1.70158, p = 0, a = this.c;
         if (this.t == 0) return this.b;
         if ((this.t /= this.d) == 1) return this.b + this.c;
         if (!p) p = this.d * .3;
-        if (a < Math.abs(this.c)) {
+        if (a < Math.abs(this.c)) 
+{
             a = this.c;
             const s = p / 4;
-        } else {
+        }
+ else 
+{
             const s = p / (2 * Math.PI) * Math.asin(this.c / a);
         }
         return a * Math.pow(2, -10 * this.t) * Math.sin((this.t * this.d - s) * (2 * Math.PI) / p) + this.c + this.b;
     }
 
-    inOutElastic() {
+    inOutElastic() 
+{
         let s = 1.70158, p = 0, a = this.c;
         if (this.t == 0) return this.b;
         if ((this.t /= this.d / 2) == 2) return this.b + this.c;
         if (!p) p = this.d * (.3 * 1.5);
-        if (a < Math.abs(this.c)) {
+        if (a < Math.abs(this.c)) 
+{
             a = this.c;
             const s = p / 4;
-        } else {
+        }
+ else 
+{
             const s = p / (2 * Math.PI) * Math.asin(this.c / a);
         }
         if (this.t < 1) return -.5 * (a * Math.pow(2, 10 * (this.t -= 1)) * Math.sin((this.t * this.d - s) * (2 * Math.PI) / p)) + this.b;
         return a * Math.pow(2, -10 * (this.t -= 1)) * Math.sin((this.t * this.d - s) * (2 * Math.PI) / p) * .5 + this.c + this.b;
     }
 
-    inBack() {
+    inBack() 
+{
         const s = 1.70158;
         return this.c * (this.t /= this.d) * this.t * ((s + 1) * this.t - s) + this.b;
     }
 
-    outBack() {
+    outBack() 
+{
         const s = 1.70158;
         return this.c * ((this.t = this.t / this.d - 1) * this.t * ((s + 1) * this.t + s) + 1) + this.b;
     }
 
-    inOutBack() {
+    inOutBack() 
+{
         let s = 1.70158;
         if ((this.t /= this.d / 2) < 1) return this.c / 2 * (this.t * this.t * (((s *= (1.525)) + 1) * this.t - s)) + this.b;
         return this.c / 2 * ((this.t -= 2) * this.t * (((s *= (1.525)) + 1) * this.t + s) + 2) + this.b;
     }
 
-    inBounce(t = this.t, b = this.b) {
+    inBounce(t = this.t, b = this.b) 
+{
         return this.c - this.outBounce(this.d - t, 0) + b;
     }
 
-    outBounce(t = this.t, b = this.b) {
+    outBounce(t = this.t, b = this.b) 
+{
         if ((t /= this.d) < (1 / 2.75))
 
             return this.c * (7.5625 * t * t) + b;
@@ -215,14 +261,17 @@ export class Easing {
 
     }
 
-    inOutBounce() {
+    inOutBounce() 
+{
         if (this.t < this.d / 2) return this.inBounce(this.t * 2, 0) * .5 + this.b;
         return this.outBounce(this.t * 2 - this.d, 0) * .5 + this.c * .5 + this.b;
     }
 }
 
-export class Tween {
-    constructor(target, channel, endValue, duration, oncomplete, easing = "inOutQuad") {
+export class Tween 
+{
+    constructor(target, channel, endValue, duration, oncomplete, easing = "inOutQuad") 
+{
         this.target = target;
         this.channel = channel;
         this.oncomplete = oncomplete;
@@ -234,22 +283,27 @@ export class Tween {
         this.easing = new Easing(target[channel], endValue, duration, 0, easing);
     }
 
-    update(dt) {
+    update(dt) 
+{
         if (this.finished) return;
         this.currentTime += dt;
-        if (this.currentTime >= this.duration) {
+        if (this.currentTime >= this.duration) 
+{
             this.target[this.channel] = this.endValue;
             if (this.oncomplete) this.oncomplete();
             this.finished = true;
-        } else
+        }
+ else
 
             this.target[this.channel] = this.easing.value(this.currentTime);
 
     }
 }
 
-export class SFX {
-    constructor(options) {
+export class SFX 
+{
+    constructor(options) 
+{
         this.context = options.context;
         const volume = (options.volume != undefined) ? options.volume : 1.0;
         this.gainNode = this.context.createGain();
@@ -263,21 +317,25 @@ export class SFX {
         let codec;
         for (const prop in options.src)
 
-            if (SFX.supportsAudioType(prop)) {
+            if (SFX.supportsAudioType(prop)) 
+{
                 codec = prop;
                 break;
             }
 
-        if (codec != undefined) {
+        if (codec != undefined) 
+{
             this.url = options.src[codec];
             this.load(this.url);
-        } else
+        }
+ else
 
             console.warn("Browser does not support any of the supplied audio files");
 
     }
 
-    static supportsAudioType(type) {
+    static supportsAudioType(type) 
+{
         let audio;
 
         // Allow user to create shortcuts, i.e. just "mp3"
@@ -293,7 +351,8 @@ export class SFX {
         return audio.canPlayType(formats[type] || type);
     }
 
-    load(url) {
+    load(url) 
+{
         // Load buffer asynchronously
         const request = new XMLHttpRequest();
         request.open("GET", url, true);
@@ -301,37 +360,44 @@ export class SFX {
 
         const sfx = this;
 
-        request.onload = function () {
+        request.onload = function () 
+{
             // Asynchronously decode the audio file data in request.response
             sfx.context.decodeAudioData(
                 request.response,
-                function (buffer) {
-                    if (!buffer) {
+                function (buffer) 
+{
+                    if (!buffer) 
+{
                         console.error("error decoding file data: " + sfx.url);
                         return;
                     }
                     sfx.buffer = buffer;
                     if (sfx.autoplay) sfx.play();
                 },
-                function (error) {
+                function (error) 
+{
                     console.error("decodeAudioData error", error);
                 }
             );
         };
 
-        request.onerror = function () {
+        request.onerror = function () 
+{
             console.error("SFX Loader: XHR error");
         };
 
         request.send();
     }
 
-    set loop(value) {
+    set loop(value) 
+{
         this._loop = value;
         if (this.source != undefined) this.source.loop = value;
     }
 
-    play() {
+    play() 
+{
         if (this.buffer == null) return;
         if (this.source != undefined) this.source.stop();
         this.source = this.context.createBufferSource();
@@ -341,26 +407,31 @@ export class SFX {
         this.source.start(0);
     }
 
-    set volume(value) {
+    set volume(value) 
+{
         this._volume = value;
         this.gainNode.gain.setTargetAtTime(value, this.context.currentTime + this.fadeDuration, 0);
     }
 
-    pause() {
+    pause() 
+{
         if (this.source == undefined) return;
         this.source.stop();
     }
 
-    stop() {
+    stop() 
+{
         if (this.source == undefined) return;
         this.source.stop();
         delete this.source;
     }
 }
 
-export class JoyStick {
+export class JoyStick 
+{
     private game: any;
-    constructor(options: { maxRadius: number; onMove: any; game: any; }) {
+    constructor(options: { maxRadius: number; onMove: any; game: any; }) 
+{
         const circle = document.createElement("div");
         circle.style.cssText = "position:absolute; bottom:35px; width:80px; height:80px; background:rgba(126, 126, 126, 0.5); border:#444 solid medium; border-radius:50%; left:50%; transform:translateX(-50%);";
         const thumb = document.createElement("div");
@@ -373,11 +444,13 @@ export class JoyStick {
         this.onMove = options.onMove;
         this.game = options.game;
         this.origin = {left: this.domElement.offsetLeft, top: this.domElement.offsetTop};
-        if (this.domElement != undefined) {
+        if (this.domElement != undefined) 
+{
             const joystick = this;
             if ("ontouchstart" in window)
 
-                this.domElement.addEventListener("touchstart", function (evt) {
+                this.domElement.addEventListener("touchstart", function (evt) 
+{
                     evt.preventDefault();
                     joystick.tap(evt);
                     evt.stopPropagation();
@@ -385,7 +458,8 @@ export class JoyStick {
 
             else
 
-                this.domElement.addEventListener("mousedown", function (evt) {
+                this.domElement.addEventListener("mousedown", function (evt) 
+{
                     evt.preventDefault();
                     joystick.tap(evt);
                     evt.stopPropagation();
@@ -394,39 +468,49 @@ export class JoyStick {
         }
     }
 
-    getMousePosition(evt) {
+    getMousePosition(evt) 
+{
         const clientX = evt.targetTouches ? evt.targetTouches[0].pageX : evt.clientX;
         const clientY = evt.targetTouches ? evt.targetTouches[0].pageY : evt.clientY;
         return {x: clientX, y: clientY};
     }
 
-    tap(evt) {
+    tap(evt) 
+{
         evt = evt || window.event;
         // get the mouse cursor position at startup:
         this.offset = this.getMousePosition(evt);
         const joystick = this;
-        if ("ontouchstart" in window) {
-            document.ontouchmove = function (evt) {
+        if ("ontouchstart" in window) 
+{
+            document.ontouchmove = function (evt) 
+{
                 evt.preventDefault();
                 joystick.move(evt);
             };
-            document.ontouchend = function (evt) {
+            document.ontouchend = function (evt) 
+{
                 evt.preventDefault();
                 joystick.up(evt);
             };
-        } else {
-            document.onmousemove = function (evt) {
+        }
+ else 
+{
+            document.onmousemove = function (evt) 
+{
                 evt.preventDefault();
                 joystick.move(evt);
             };
-            document.onmouseup = function (evt) {
+            document.onmouseup = function (evt) 
+{
                 evt.preventDefault();
                 joystick.up(evt);
             };
         }
     }
 
-    move(evt) {
+    move(evt) 
+{
         evt = evt || window.event;
         const mouse = this.getMousePosition(evt);
         // calculate the new cursor position:
@@ -435,7 +519,8 @@ export class JoyStick {
         //this.offset = mouse;
 
         const sqMag = left * left + top * top;
-        if (sqMag > this.maxRadiusSquared) {
+        if (sqMag > this.maxRadiusSquared) 
+{
             //Only use sqrt if essential
             const magnitude = Math.sqrt(sqMag);
             left /= magnitude;
@@ -462,11 +547,15 @@ export class JoyStick {
 
     }
 
-    up(evt) {
-        if ("ontouchstart" in window) {
+    up(evt) 
+{
+        if ("ontouchstart" in window) 
+{
             document.ontouchmove = null;
             document.touchend = null;
-        } else {
+        }
+ else 
+{
             document.onmousemove = null;
             document.onmouseup = null;
         }
@@ -477,16 +566,20 @@ export class JoyStick {
     }
 }
 
-export class Preloader {
-    constructor(options) {
+export class Preloader 
+{
+    constructor(options) 
+{
         this.assets = {};
-        for (const asset of options.assets) {
+        for (const asset of options.assets) 
+{
             this.assets[asset] = {loaded: 0, complete: false};
             this.load(asset);
         }
         this.container = options.container;
 
-        if (options.onprogress == undefined) {
+        if (options.onprogress == undefined) 
+{
             this.onprogress = onprogress;
             this.domElement = document.createElement("div");
             this.domElement.style.position = "absolute";
@@ -523,7 +616,8 @@ export class Preloader {
 
                 document.body.appendChild(this.domElement);
 
-        } else
+        }
+ else
 
             this.onprogress = options.onprogress;
 
@@ -531,27 +625,33 @@ export class Preloader {
 
         const loader = this;
 
-        function onprogress(delta) {
+        function onprogress(delta) 
+{
             const progress = delta * 100;
             loader.progressBar.style.width = `${progress}%`;
         }
     }
 
-    checkCompleted() {
-        for (const prop in this.assets) {
+    checkCompleted() 
+{
+        for (const prop in this.assets) 
+{
             const asset = this.assets[prop];
             if (!asset.complete) return false;
         }
         return true;
     }
 
-    get progress() {
+    get progress() 
+{
         let total = 0;
         let loaded = 0;
 
-        for (const prop in this.assets) {
+        for (const prop in this.assets) 
+{
             const asset = this.assets[prop];
-            if (asset.total == undefined) {
+            if (asset.total == undefined) 
+{
                 loaded = 0;
                 break;
             }
@@ -562,15 +662,19 @@ export class Preloader {
         return loaded / total;
     }
 
-    load(url) {
+    load(url) 
+{
         const loader = this;
-        var xobj = new XMLHttpRequest();
+        const xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open("GET", url, true);
-        xobj.onreadystatechange = function () {
-            if (xobj.readyState == 4 && xobj.status == "200") {
+        xobj.onreadystatechange = function () 
+{
+            if (xobj.readyState == 4 && xobj.status == "200") 
+{
                 loader.assets[url].complete = true;
-                if (loader.checkCompleted()) {
+                if (loader.checkCompleted()) 
+{
                     if (loader.domElement != undefined)
 
                         if (loader.container != undefined)
@@ -585,7 +689,8 @@ export class Preloader {
                 }
             }
         };
-        xobj.onprogress = function (e) {
+        xobj.onprogress = function (e) 
+{
             const asset = loader.assets[url];
             asset.loaded = e.loaded;
             asset.total = e.total;
@@ -595,8 +700,10 @@ export class Preloader {
     }
 }
 
-export class CanvasText {
-    constructor(scene, msg, config, material) {
+export class CanvasText 
+{
+    constructor(scene, msg, config, material) 
+{
         this.config = (config === undefined) ? {
             font: "sans",
             size: 30,
@@ -619,12 +726,14 @@ export class CanvasText {
         this.update(msg);
     }
 
-    update(msg) {
+    update(msg) 
+{
         if (this.mesh === undefined) return;
 
         let context = this.context;
 
-        if (context === undefined) {
+        if (context === undefined) 
+{
             const canvas = this.createOffscreenCanvas(this.config.width, this.config.height);
             this.context = canvas.getContext("2d");
             context = this.context;
@@ -645,7 +754,8 @@ export class CanvasText {
         const bg = this.img;
         context.clearRect(0, 0, this.config.width, this.config.height);
 
-        if (this.config.debug) {
+        if (this.config.debug) 
+{
             context.beginPath();
             context.rect(0, 0, this.config.width, this.config.height);
             context.stroke();
@@ -656,14 +766,16 @@ export class CanvasText {
         this.texture.needsUpdate = true;
     }
 
-    createOffscreenCanvas(w, h) {
+    createOffscreenCanvas(w, h) 
+{
         const canvas = document.createElement("canvas");
         canvas.width = w;
         canvas.height = h;
         return canvas;
     }
 
-    wrapText(msg, context) {
+    wrapText(msg, context) 
+{
         const words = msg.text.split(" ");
         let line = "";
         const lines = [];
@@ -672,14 +784,17 @@ export class CanvasText {
 
         context.font = `${this.config.size}pt ${this.config.font}`;
 
-        words.forEach(function (word) {
+        words.forEach(function (word) 
+{
             const testLine = `${line}${word} `;
             const metrics = context.measureText(testLine);
             const testWidth = metrics.width;
-            if (testWidth > maxWidth) {
+            if (testWidth > maxWidth) 
+{
                 lines.push(line);
                 line = `${word} `;
-            } else
+            }
+ else
 
                 line = testLine;
 
@@ -690,7 +805,8 @@ export class CanvasText {
         let y = this.config.height - lines.length * lineHeight;
         const centerX = this.config.width / 2;
 
-        lines.forEach(function (line) {
+        lines.forEach(function (line) 
+{
             context.fillText(line, centerX, y);
             y += lineHeight;
         });
@@ -700,7 +816,8 @@ export class CanvasText {
         context.fillText(msg.name, centerX, y);
     }
 
-    positionText(camera, pos) {
+    positionText(camera, pos) 
+{
         if (!this.planesize) return;
 
         if (pos.bottom !== undefined)

@@ -1,37 +1,35 @@
 import Footer from "../../components/footer/Footer";
 import Button from "@mui/material/Button";
 import "../../styles/home.css";
-import Card from "../../components/card/Card";
 import Header from "../../components/Header/Header";
 
 import Game from "../../utils/game";
 import React, {useEffect, useState} from "react";
 import {Blogs, EventObject, Events} from "../../api/model";
-import {useNavigate} from "react-router-dom";
 
-export default function Home() 
+export default function Home()
 {
     const [events, setEvents] = useState<EventObject[]>([]);
     const [blogs, setBlogs] = useState<EventObject[]>([]);
-    
+
     const root3 = document.getElementById("3root");
 
-    useEffect(() => 
+    useEffect(() =>
 {
         new Game();
-        if (root3) 
+        if (root3)
 
             if (root3.children.length > 1)
                 root3.removeChild(root3.children[0]);
-        
-        return () => 
+
+        return () =>
 {
             if (root3)
                 root3.innerHTML = "";
         };
     }, [root3]);
 
-    useEffect(() => 
+    useEffect(() =>
 {
         Events.filter({}).then(({results}) => setEvents(results));
         Blogs.filter({}).then(({results}) => setBlogs(results));
@@ -59,9 +57,10 @@ export default function Home()
                     <span className="divider"/>
                     <span className="see">see all</span>
                 </div>
-                <div id={"events"}   className="car" style={{fontSize: "18px"}}>
+                <div id={"events"} className="car" style={{fontSize: "18px"}}>
                     {events.map((event, i) =>
-                        <div key={i} className="card" style={{width: "15rem", minHeight: "100px", border: "1px solid #FFAC41"}}>
+                        <div key={i} className="card"
+                             style={{width: "15rem", minHeight: "100px", border: "1px solid #FFAC41"}}>
                             <img className="card-img-top" src={event.cover} alt=""/>
                             <div className="card-body" style={{minHeight: "130px"}}>
                                 <p className="card-text">{event.intro}</p>
@@ -82,7 +81,8 @@ export default function Home()
                 </div>
                 <div className="car" style={{fontSize: "18px"}}>
                     {blogs.map((event, i) =>
-                        <div key={i} className="card" style={{width: "15rem", minHeight: "100px", border: "1px solid #FFAC41"}}>
+                        <div key={i} className="card"
+                             style={{width: "15rem", minHeight: "100px", border: "1px solid #FFAC41"}}>
                             <img className="card-img-top" src={event.cover} alt=""/>
                             <div className="card-body" style={{minHeight: "130px"}}>
                                 <p className="card-text">{event.intro}</p>

@@ -3,7 +3,8 @@ import { elastic as Menu } from "react-burger-menu";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
-export default props => {
+export default props => 
+{
     return (
         <Menu>
             <Link to="/">

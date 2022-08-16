@@ -206,20 +206,28 @@ export default class Game
 
     set action(name)
     {
-        if(this.mixer)
+        try
         {
-            const animationCode = animationNameMap[name];
-            const action = this.mixer.clipAction(this.animations[animationCode]);
+            if (this.mixer)
+            {
+                const animationCode = animationNameMap[name];
+                const action = this.mixer.clipAction(this.animations[animationCode]);
 
-            action.time = 0;
-            this.mixer.stopAllAction();
-            this.actionTime = Date.now();
+                action.time = 0;
+                this.mixer.stopAllAction();
+                this.actionTime = Date.now();
 
-            action.fadeIn(0.5);
-            action.play();
+                action.fadeIn(0.5);
+                action.play();
+            }
+        }
+        catch (e)
+        {
+            console.error(e);
         }
 
         this.actionName = name;
+
     }
 
     get action()
