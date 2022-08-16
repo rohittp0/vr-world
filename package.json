@@ -9,7 +9,7 @@
     "stage": "webpack build --config webpack/webpack.config.js --env env=stg",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
-    "ci": "yarn install --prefer-offline --frozen-lockfile",
+    "ci": "yarn install --prefer-offline --frozen-lockfile"
   },
   "browserslist": [
     ">0.2%",
