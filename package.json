@@ -10,7 +10,6 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "ci": "yarn install --prefer-offline --frozen-lockfile",
-    "postinstall": "husky install"
   },
   "browserslist": [
     ">0.2%",
