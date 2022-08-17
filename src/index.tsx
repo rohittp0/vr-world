@@ -2,7 +2,7 @@ import "./bootstrap.css";
 
 import { Workbox } from "workbox-window";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Form from "./pages/Form";
 import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
 import Members from "./pages/members/index";
@@ -34,6 +34,7 @@ function App()
           <Route path="/members" element={<Members />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/form" element={<Form />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs/:id" element={<Blog />} />
         </Routes>
