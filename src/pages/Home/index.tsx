@@ -2,10 +2,11 @@ import Footer from "../../components/footer/Footer";
 import Button from "@mui/material/Button";
 import "../../styles/home.css";
 import Header from "../../components/Header/Header";
-import TwitterContainer from "../tweets";
+import TwitterContainer from "../../components/tweets";
 import Game from "../../utils/game";
 import React, {useEffect, useState} from "react";
 import {Blogs, EventObject, Events} from "../../api/model";
+import {useAuth} from "../../api/auth";
 
 export default function Home()
 {
@@ -21,7 +22,6 @@ export default function Home()
 
             if (root3.children.length > 1)
                 root3.removeChild(root3.children[0]);
-
         return () =>
 {
             if (root3)
@@ -34,7 +34,8 @@ export default function Home()
         Events.filter({}).then(({results}) => setEvents(results));
         Blogs.filter({}).then(({results}) => setBlogs(results));
     }, []);
-
+    const {user} = useAuth(true);
+    console.log(user);
 
     return (
         <>
