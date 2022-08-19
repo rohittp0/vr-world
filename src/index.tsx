@@ -12,6 +12,7 @@ import About from "./pages/about/about";
 import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
 import Login from "./pages/login";
+import Dashboard from "./pages/dashboard";
 
 const isProduction =
   location.hostname !== "localhost" &&
@@ -35,6 +36,7 @@ function App()
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/form" element={<Form />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs/:id" element={<Blog />} />
         </Routes>

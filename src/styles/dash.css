@@ -1,0 +1,17 @@
+.dashmain{
+    display: flex;
+    justify-content: flex-start;
+
+}
+.dashbar{
+}
+@media only screen and (max-width: 450px){
+    .dashmenu{
+        display: flex;
+        flex-direction: row;
+    }
+    .dashmain{
+        display: flex;
+        flex-direction: column;
+    }
+}

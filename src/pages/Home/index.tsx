@@ -22,6 +22,7 @@ export default function Home()
 
             if (root3.children.length > 1)
                 root3.removeChild(root3.children[0]);
+
         return () =>
 {
             if (root3)
