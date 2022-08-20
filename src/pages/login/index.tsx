@@ -39,8 +39,8 @@ export default function Login()
 
 
                             </div>
-                        <div classname="button"></div>
-                        <input type="button" class="button" value="Log in"/>
+
+                               <input type="button" className="button" value="Log in"/>
 
                     </form>
                 </div>

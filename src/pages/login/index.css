@@ -4,8 +4,7 @@
     display:flex;
     justify-content: center;
     text-align: center;
-
-  align-items: center;
+     align-items: center;
 
 }
 .welcome
@@ -22,7 +21,7 @@
 }
 .divider {
     padding: 0 30px;
-    background-color: #FF1E56;
+    background-color: #32323226;
     height: 3px;
     width: 83%;
     margin-top: 17px;
