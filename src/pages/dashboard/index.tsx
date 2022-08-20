@@ -19,7 +19,7 @@ const Dashboard = () =>
                         </ul>
                     </div>
                 <div className="compFrame">
-                {page === "profile" && <Profile />}
+                           {page === "profile" && <Profile />}
                            {page === "resources" && <Resources />}
                 </div>
                 </div>
