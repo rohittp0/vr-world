@@ -4,7 +4,38 @@
 
 }
 .dashbar{
+    border-right:2px solid;
+    padding: 10px;
 }
+.reshead{
+    font-family: 'Poppins';
+    padding: 3px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 30px;
+    color:#323E4D;
+}
+.dashbutton {
+    text-align: center;
+    color: #ff1e56;
+    font-size: 15px;
+    width: 137px;
+    font-family: 'Poppins';
+    border-radius: 85px;
+    border: 2px solid #ff1e56;
+}
+.dashbutton>a{
+    color: #ff1e56;
+}
+.resvideo{
+    text-align: center;
+    color:#323E4D;
+    padding: 16px ;
+    font-weight: normal;
+
+}
+
 @media only screen and (max-width: 450px){
     .dashmenu{
         display: flex;
@@ -13,5 +44,10 @@
     .dashmain{
         display: flex;
         flex-direction: column;
+    }
+    .dashbar{
+        border-bottom: 2px solid;
+
+        border-right: 0px;
     }
 }
