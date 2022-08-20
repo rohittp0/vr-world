@@ -7,6 +7,9 @@
     display: flex;
     gap: 10px;
 }
+.compFrame{
+    width: 80%;
+}
 .dashbar{
     border-right:2px solid;
     padding: 10px;
@@ -34,7 +37,7 @@
     color: #ff1e56;
     margin-top: -10px;
 }
-.prfcontainer{
+.prfcontainer,.rescontainer{
     margin-top: -80px;
 }
 
@@ -68,18 +71,51 @@
     width: 100%;
     margin-top: 25px;
 }
+
 .proposals{
     display:flex;
 }
-.resvideo{
-    text-align: center;
+.resvideo,.reshead{
+    display:flex;
+    gap:5px;
     color:#323E4D;
-    padding: 16px ;
+    padding-top: 25px ;
+    padding-bottom: 10px;
     font-weight: normal;
 
 }
+.videos{
+    display: flex;
+    gap:40px;
+    flex-wrap: wrap;
+}
+.resbar{
+    width: 30px;
+    height: 36px;
+    border-color: #ff1e56;
+    font-weight: bolder;
+    color:#ff1e56;
+    transition: 1.5s;
+    font-size: 11px;
+    border-radius: 30px;
 
+}
+.resbar:focus{
+
+    font-size: 17px;
+    border-radius: 30px;
+    color: #B8C1CC;
+    width: 175px;
+    border-color: #ff1e56;
+    font-weight: bold;
+    height: 26px;
+;
+
+}
 @media only screen and (max-width: 450px){
+    .compFrame{
+        margin-left: 10px;
+    }
     .dashmenu{
         display: flex;
         flex-direction: row;
@@ -90,7 +126,6 @@
     }
     .dashbar{
         border-bottom: 2px solid;
-
         border-right: 0px;
     }
 }
