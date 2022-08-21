@@ -121,7 +121,6 @@
 
 .resvideo,.reshead{
     display:flex;
-    gap:5px;
     color:#323E4D;
     padding-top: 25px ;
     padding-bottom: 10px;
@@ -139,7 +138,7 @@
 }
 
 .resbar{
-    width: 30px;
+    width: 80px;
     height: 36px;
     border-color: #ff1e56;
     font-weight: bolder;
@@ -149,23 +148,22 @@
     border-radius: 30px;
 
 }
-.resbar:hover{
-    font-size: 17px;
-    border-radius: 30px;
-    color: #B8C1CC;
-    width: 175px;
-    border-color: #ff1e56;
-    font-weight: bold;
-    height: 26px;
+.inputRounded .MuiOutlinedInput-root{
+    border-radius: 50px;
 }
+
 .watchbutton{
     color: #ff1e56;
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
     font-weight: bold;
     padding-left: 8px;
 }
 @media only screen and (max-width: 450px){
+    .reshead>.prfdivider{
+        width: 30%;
+        margin-right: 10px;
+    }
     .compFrame{
         margin-left: 10px;
     }
