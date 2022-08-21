@@ -1,26 +1,46 @@
-
-import React, {useState} from "react";
+import {React, useState} from "react";
 import Header from "../../components/Header/Header";
 import Profile from "../../components/Profile";
+import Topic from"../../components/Topic";
+import ProjStart from"../../components/ProjStart";
+import {Person, Folder, AccountBox, Article, EmojiEmotions} from "@mui/icons-material";
 import Resources from "../../components/Resources";
 import "../../styles/dash.css";
 
 const Dashboard = () =>
 {
+    function expand()
+        {
+      const exp = document.getElementsByClassName("subdash")[0];
+                                 if(exp.style.display==="block")
+                                    exp.style.display="none";
+                                    else
+                                    exp.style.display="block";
+        };
     const [page, setPage]=useState("profile");
+
     return (
 <>
             <Header />
             <div className="dashmain">
              <div className="dashbar">
                         <ul className="dashmenu">
-                            <li className="menu-item" onClick={() => setPage("profile")}>Profile</li>
-                            <li className="menu-item" onClick={() => setPage("resources")}>Resources</li>
+                            <li className="menu-item" onClick={() => setPage("profile")}><Person sx={{minWidth:"30px"}}/>Profile</li>
+                            <li className="menu-item" onClick={() => setPage("resources")}><Folder sx={{minWidth:"30px"}}/>Resources</li>
+                            <li className="menu-item-click" onClick={()=>expand()}><AccountBox sx={{minWidth:"30px"}}/>Research</li>
+                             <ul className="subdash">
+                                                        <li className="menu-item" onClick={() => setPage("topic")}><Article sx={{minWidth:"30px"}}/>Topic List</li>
+                                                        <li className="menu-item" onClick={() => setPage("projstart")}><EmojiEmotions sx={{minWidth:"30px"}}/>Start a Project</li>
+                                                    </ul>
                         </ul>
                     </div>
                 <div className="compFrame">
                            {page === "profile" && <Profile />}
                            {page === "resources" && <Resources />}
+                           {page === "topic" && <Topic />}
+                           {page === "projstart" && <ProjStart />}
+
+
                 </div>
                 </div>
                 </>
