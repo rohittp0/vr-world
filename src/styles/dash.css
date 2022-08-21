@@ -95,22 +95,24 @@
     border-color: #ff1e56;
     font-weight: bolder;
     color:#ff1e56;
-    transition: 1.5s;
+    transition: 1s;
     font-size: 11px;
     border-radius: 30px;
-
 }
-.resbar:focus{
-
+.resbar:hover{
     font-size: 17px;
-    border-radius: 30px;
     color: #B8C1CC;
     width: 175px;
     border-color: #ff1e56;
     font-weight: bold;
     height: 26px;
-;
-
+}
+.watchbutton{
+    color: #ff1e56;
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 8px;
 }
 @media only screen and (max-width: 450px){
     .compFrame{

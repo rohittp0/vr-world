@@ -43,9 +43,8 @@ const Resources = () =>
                           </Typography>
                       </CardContent>
                       <CardActions sx={{backgroundColor:"#f5f5f5"}}>
-                          <Typography variant="body2" color="#FF1E56" fontFamily="Source Sans Pro" fontWeight="bold" fontSize="15px">
-                              Watch
-                          </Typography>
+                          <a href="https://youtu.be/dQw4w9WgXcQ" className="watchbutton">Watch
+                      </a>
                           <YouTubeIcon sx={{ color: "red" }} />
                       </CardActions>
                   </Card>
