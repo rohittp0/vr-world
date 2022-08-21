@@ -74,6 +74,12 @@
     font-size: 15px;
     width:30%;
 }
+.profile_hero{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
 .profile_head>div{
     margin:15px;
 }
@@ -81,10 +87,7 @@
     display:flex;
     gap:20px;
 }
-.prfsub{
-    display:flex;
-    justify-content: space-between;
-}
+
 .prfdivider{
     padding: 0 30px;
     background-color: rgba(50, 50, 50, 0.15);
@@ -148,6 +151,10 @@
     font-weight: bold;
     height: 26px;
 }
+.editComponents{
+    display: flex;
+    flex-direction: column;
+}
 @media only screen and (max-width: 450px){
     .compFrame{
         margin-left: 10px;
@@ -180,5 +187,8 @@
         padding:10px;
         margin:0px auto;
         border-radius: 10px;
+    }
+    .profile_head>div{
+        margin:0px;
     }
 }
