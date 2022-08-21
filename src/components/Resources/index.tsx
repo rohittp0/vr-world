@@ -22,7 +22,6 @@ const Resources = () =>
           <div className="resvideo">
               <Typography variant="h4" fontFamily="Poppins" fontWeight="bold" fontSize="20px">Videos</Typography>
               <div className="prfdivider"/>
-
                       </div>
               <div className={"videos"}>
                   <Card sx={{ maxWidth: 345, borderRadius:"15px" }}>
