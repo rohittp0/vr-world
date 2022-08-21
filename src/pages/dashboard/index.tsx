@@ -1,10 +1,10 @@
 import {React, useState} from "react";
 import Header from "../../components/Header/Header";
-import Profile from "../../components/Profile";
+import ProfileIndex from "../../components/Profile";
 import Topic from"../../components/Topic";
 import ProjStart from"../../components/ProjStart";
-import {Person, Folder, AccountBox, Article, EmojiEmotions} from "@mui/icons-material";
 import Resources from "../../components/Resources";
+import {Person, Folder, AccountBox, Article, EmojiEmotions} from "@mui/icons-material";
 import "../../styles/dash.css";
 
 const Dashboard = () =>
@@ -16,11 +16,10 @@ const Dashboard = () =>
                                     exp.style.display="none";
                                     else
                                     exp.style.display="block";
-        };
+        }
     const [page, setPage]=useState("profile");
-
     return (
-<>
+    <>
             <Header />
             <div className="dashmain">
              <div className="dashbar">
@@ -35,16 +34,13 @@ const Dashboard = () =>
                         </ul>
                     </div>
                 <div className="compFrame">
-                           {page === "profile" && <Profile />}
+                           {page === "profile" && <ProfileIndex />}
                            {page === "resources" && <Resources />}
                            {page === "topic" && <Topic />}
                            {page === "projstart" && <ProjStart />}
-
-
                 </div>
                 </div>
                 </>
     );
 };
-
 export default Dashboard;
