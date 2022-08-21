@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .dashmain{
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: flex-start;
-    gap:100px;
+    gap:50px;
 }
 .profile_head {
     display: flex;
@@ -11,18 +14,10 @@
     width: 80%;
 }
 .dashbar{
-    border-right:2px solid;
-    padding: 10px;
+    font-size: 15px;
+    border-right:1px solid #EDF0F2;
+    padding-right: 50px;
     margin-top: -10px;
-}
-.reshead{
-    font-family: 'Poppins';
-    padding: 3px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: 30px;
-    color:#323E4D;
 }
 .dashbutton {
     text-align: center;
@@ -37,6 +32,32 @@
     color: #ff1e56;
     margin-top: -10px;
 }
+.dashmenu>li{
+    display: flex;
+    justify-content: flex-start;
+    padding:30px;
+    border-radius: 10px;
+}
+.dashmenu>li:hover,.subdash>li:hover{
+    color:white;
+    background: linear-gradient(180deg, #FF1E56 0%, #FF4B78 100%);
+    box-shadow: 0px 5px 10px rgba(64, 94, 128, 0.02);
+    border-radius: 10px;
+}
+.subdash{
+    display: none;
+}
+.subdash>li{
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 10px;
+    margin-left:-5px;
+    padding:5px;
+    list-style-type: none;
+}
+
+
+
 .prfcontainer,.rescontainer{
     margin-top: -80px;
 }
@@ -74,7 +95,21 @@
 
 .proposals{
     display:flex;
+    flex-wrap: nowrap;
+    gap:20px;
 }
+
+
+.reshead{
+    font-family: 'Poppins';
+    padding: 3px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 30px;
+    color:#323E4D;
+}
+
 .resvideo,.reshead{
     display:flex;
     gap:5px;
@@ -89,6 +124,11 @@
     gap:40px;
     flex-wrap: wrap;
 }
+.dashmenu{
+    color:#606A80;
+    list-style-type: none;
+}
+
 .resbar{
     width: 30px;
     height: 36px;
@@ -98,10 +138,8 @@
     transition: 1.5s;
     font-size: 11px;
     border-radius: 30px;
-
 }
 .resbar:focus{
-
     font-size: 17px;
     border-radius: 30px;
     color: #B8C1CC;
@@ -109,8 +147,6 @@
     border-color: #ff1e56;
     font-weight: bold;
     height: 26px;
-;
-
 }
 @media only screen and (max-width: 450px){
     .compFrame{
@@ -121,11 +157,28 @@
         flex-direction: row;
     }
     .dashmain{
+        gap:100px;
         display: flex;
         flex-direction: column;
     }
     .dashbar{
-        border-bottom: 2px solid;
+        font-size: 10px;
+        border-bottom: 1px solid #EDF0F2;
         border-right: 0px;
+    }
+    .subdash>li{
+        padding:10px;
+        font-size: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .dashmenu>li{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding:10px;
+        margin:0px auto;
+        border-radius: 10px;
     }
 }
