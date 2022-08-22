@@ -9,6 +9,7 @@ const EditProfile = ({stateChanger, ...rest}) =>
   return (
       <div>
           <div className="prfcontainer">
+              <h4>Edit</h4>
                     <div className="profile_hero">
                      <Avatar sx={{ width: 140, height: 140, backgroundColor:"red", borderRadius:"10px" }}>H</Avatar>
                     <IconButton  onClick={()=>stateChanger("profile")}>
@@ -16,24 +17,30 @@ const EditProfile = ({stateChanger, ...rest}) =>
                                       </IconButton>
                      </div>
                      <div className="editComponents">
-                     <TextField id="standard-basic" label="Name" variant="standard" />
-                    <TextField id="standard-basic" label="Bio" variant="standard" />
+                         <h6>Name</h6>
+                     <TextField id="standard-basic" variant="standard" />
+                         <h6>Bio</h6>
+                    <TextField id="standard-basic"variant="standard" />
                         <input
                           accept="application/pdf"
-                          style={{ display: "none" }}
+                          style={{ display: "none"}}
                           id="raised-button-file"
                           multiple
                           type="file"
                         />
                         <label htmlFor="raised-button-file">
-                          <Button variant="raised" component="span">
+                          <Button variant="outlined" component="span" sx={{marginLeft:"-15px",color:"#ff1e56",borderColor:"#ff1e56"}}>
                             Upload CV
                           </Button>
-                        </label> 
-                    <TextField id="standard-basic" label="Github Link" variant="standard" />
-                    <TextField id="standard-basic" label="Twitter Link" variant="standard" />
-                    <TextField id="standard-basic" label="LinkedIn Link" variant="standard" />
+                        </label>
+                         <h6>Github Link</h6>
+                    <TextField id="standard-basic" variant="standard" />
+                         <h6>Twitter Link</h6>
+                    <TextField id="standard-basic"  variant="standard" />
+                         <h6>LinkedIn Link</h6>
+                    <TextField id="standard-basic"  variant="standard" />
                      </div>
+              <input type="button" className="edtbutton" value="Save"/>
           </div>
 
       </div>
