@@ -29,13 +29,13 @@ const Profile = ({stateChanger, ...rest}) =>
             <Avatar sx={{ width: 140, height: 140, backgroundColor:"red", borderRadius:"10px" }}>H</Avatar>
              <div className="profile_info">
                <div className="prfsub">
-                       <Typography  sx={{ fontSize: 35 }}>Name</Typography>
+                       <Typography  sx={{ fontSize: 35, fontFamily:"Poppins",fontWeight:"Bolder" }}>Name</Typography>
                </div>
-                <Typography  sx={{ fontSize: 20}}>Neque porro quisquam est qui dolorem</Typography>
-                 <Typography  sx={{ fontSize: 20}}>Neque porro quisquam est qui dolorem</Typography>
+                <Typography  sx={{ fontSize: 20, fontFamily:"Poppins", fontWeight:"Bold"}}>Neque porro quisquam est qui dolorem</Typography>
+                 <Typography  sx={{ fontSize: 20,fontFamily:"Poppins", fontWeight:"Bold"}}>Neque porro quisquam est qui dolorem</Typography>
                <div className="social_icons">
                  <span className="cv">CV</span>
-                 <TwitterIcon sx={{color:"#FF1E56"}}/>
+                 <TwitterIcon sx={{color:"#FF1E56",}}/>
                  <LinkedInIcon sx={{color:"#FF1E56"}}/>
                  <GitHubIcon sx={{color:"#FF1E56"}}/>
                  </div>
@@ -46,7 +46,7 @@ const Profile = ({stateChanger, ...rest}) =>
                   </IconButton>
           </div>
           <div className="proposals">
-            <Typography sx={{ fontSize: 20}}>Active Proposals</Typography>
+            <Typography sx={{ fontSize: 20,fontFamily:"Poppins", fontWeight:"Bold",}}>Active Proposals</Typography>
            <div className="prfdivider"/>
            </div>
              <div className="proptable">
@@ -55,8 +55,8 @@ const Profile = ({stateChanger, ...rest}) =>
                   <TableHead>
                     <TableRow>
                       <TableCell>S.No</TableCell>
-                      <TableCell>Name</TableCell>
-                      <TableCell>Status</TableCell>
+                      <TableCell align="center">Name</TableCell>
+                      <TableCell align="center">Status</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -64,15 +64,15 @@ const Profile = ({stateChanger, ...rest}) =>
                         <TableCell component="th" scope="row">
                              1
                         </TableCell>
-                        <TableCell align="right">Jury Learning: Integrating Dissenting Voices into Machine Learning Models wins Best Paper at CHI 2022</TableCell>
-                        <TableCell align="right">Reviewed</TableCell>
+                        <TableCell align="center">Jury Learning: Integrating Dissenting Voices into Machine Learning Models wins Best Paper at CHI 2022</TableCell>
+                        <TableCell align="center">Reviewed</TableCell>
                       </TableRow>
                        <TableRow>
                       <TableCell component="th" scope="row">
                            2
                       </TableCell>
-                      <TableCell align="right">HybridTrak: Adding Full-Body Tracking to VR Using an Off-the-Shelf Webcam</TableCell>
-                      <TableCell align="right">Reviewed</TableCell>
+                      <TableCell align="center">HybridTrak: Adding Full-Body Tracking to VR Using an Off-the-Shelf Webcam</TableCell>
+                      <TableCell align="center">Reviewed</TableCell>
                     </TableRow>
                   </TableBody>
                 </Table>
