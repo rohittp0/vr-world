@@ -6,9 +6,11 @@ import ProjStart from"../../components/ProjStart";
 import Resources from "../../components/Resources";
 import {Person, Folder, AccountBox, Article, EmojiEmotions} from "@mui/icons-material";
 import "../../styles/dash.css";
+import {useAuth} from "../../api/auth";
 
 const Dashboard = () =>
 {
+   const {user} = useAuth(true);
     function expand()
         {
       const exp = document.getElementsByClassName("subdash")[0];
