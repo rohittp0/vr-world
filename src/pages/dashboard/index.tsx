@@ -4,15 +4,17 @@ import ProfileIndex from "../../components/Profile";
 import Topic from"../../components/Topic";
 import ProjStart from"../../components/ProjStart";
 import Resources from "../../components/Resources";
-import {Person, Folder, AccountBox, Article, EmojiEmotions} from "@mui/icons-material";
+import {Person, Folder, AccountBox, Article, EmojiEmotions,KeyboardArrowDown} from "@mui/icons-material";
 import "../../styles/dash.css";
 import {useAuth} from "../../api/auth";
 
 const Dashboard = () =>
 {
    const {user} = useAuth(true);
+   console.log(user)
     function expand()
-        {
+       {
+
       const exp = document.getElementsByClassName("subdash")[0];
                                  if(exp.style.display==="block")
                                     exp.style.display="none";
@@ -28,7 +30,7 @@ const Dashboard = () =>
                         <ul className="dashmenu">
                             <li className="menu-item" onClick={() => setPage("profile")}><Person sx={{minWidth:"30px"}}/>Profile</li>
                             <li className="menu-item" onClick={() => setPage("resources")}><Folder sx={{minWidth:"30px"}}/>Resources</li>
-                            <li className="menu-item-click" onClick={()=>expand()}><AccountBox sx={{minWidth:"30px"}}/>Research</li>
+                            <li className="menu-item-click" onClick={()=>expand()}><AccountBox sx={{minWidth:"30px"}}/>Research <KeyboardArrowDown /></li>
                              <ul className="subdash">
                                                         <li className="menu-item" onClick={() => setPage("topic")}><Article sx={{minWidth:"30px"}}/>Topic List</li>
                                                         <li className="menu-item" onClick={() => setPage("projstart")}><EmojiEmotions sx={{minWidth:"30px"}}/>Start a Project</li>

@@ -11,15 +11,14 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// function createData(number, name,status)
-// {
-//  return {number, name, status};
-// }
-//
-// const rows = [
-//  createData(1, "Jury Learning: Integrating Dissenting Voices into Machine Learning Models wins Best Paper at CHI 2022", "Reviewed"),
-//  createData(2, "HybridTrak: Adding Full-Body Tracking to VR Using an Off-the-Shelf Webcam", "Reviewed"),
-// ];
+function createData(name:string,status:string)
+{
+ return {name, status};
+}
+const rows = [
+ createData("Jury Learning: Integrating Dissenting Voices into Machine Learning Models wins Best Paper at CHI 2022", "Reviewed"),
+ createData("HybridTrak: Adding Full-Body Tracking to VR Using an Off-the-Shelf Webcam", "Reviewed"),
+];
 const Profile = ({stateChanger, ...rest}) =>
 {
   return (
@@ -49,32 +48,24 @@ const Profile = ({stateChanger, ...rest}) =>
             <Typography sx={{ fontSize: 20,fontFamily:"Poppins", fontWeight:"Bold",}}>Active Proposals</Typography>
            <div className="prfdivider"/>
            </div>
-             <div className="proptable">
+            <div className="proptable">
+
            <TableContainer>
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>S.No</TableCell>
-                      <TableCell align="center">Name</TableCell>
-                      <TableCell align="center">Status</TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Status</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                      <TableRow>
-                        <TableCell component="th" scope="row">
-                             1
-                        </TableCell>
-                        <TableCell align="center">Jury Learning: Integrating Dissenting Voices into Machine Learning Models wins Best Paper at CHI 2022</TableCell>
-                        <TableCell align="center">Reviewed</TableCell>
+                  {rows.map((row)=>(
+                      <TableRow key={row.name}>
+                        <TableCell>{row.name}</TableCell>
+                        <TableCell>{row.status}</TableCell>
                       </TableRow>
-                       <TableRow>
-                      <TableCell component="th" scope="row">
-                           2
-                      </TableCell>
-                      <TableCell align="center">HybridTrak: Adding Full-Body Tracking to VR Using an Off-the-Shelf Webcam</TableCell>
-                      <TableCell align="center">Reviewed</TableCell>
-                    </TableRow>
-                  </TableBody>
+                      ))}
+                   </TableBody>
                 </Table>
               </TableContainer>
               </div>
