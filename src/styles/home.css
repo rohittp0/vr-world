@@ -21,8 +21,6 @@
   width:50%;
   }
 
-
-
 .description {
   font-weight: 700;
   margin-top: 20px;
@@ -85,4 +83,17 @@
   .divider {
     width: 30%;
   }
+  .articles {
+    flex-direction: column;
+    justify-content: center;
+    padding:20px;
+  }
+  .news{
+    text-align: center;
+    width: 100%;
+  }
+  .tweets{
+    width: 100%;
+  }
+
 }

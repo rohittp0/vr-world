@@ -32,12 +32,12 @@ const Footer = () =>
                                 <span className="line none"></span>
                             </div>
                         </div>
-                        <div className="head">
-                            <span className="line"/>
+                        <div className="head ">
+                            <span className="line"></span>
                             <div className="cpybox center">
                                 <span className="copy">copyrights @xrc cusat 2022</span>
                             </div>
-                            <span className="line"/>
+                            <span className="line"></span>
                         </div>
                     </footer>
                 </div>

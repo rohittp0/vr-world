@@ -6,7 +6,6 @@ import TwitterContainer from "../../components/tweets";
 import Game from "../../utils/game";
 import React, {useEffect, useState} from "react";
 import {Blogs, EventObject, Events} from "../../api/model";
-import {useAuth} from "../../api/auth";
 
 export default function Home()
 {
@@ -35,8 +34,7 @@ export default function Home()
         Events.filter({}).then(({results}) => setEvents(results));
         Blogs.filter({}).then(({results}) => setBlogs(results));
     }, []);
-    const {user} = useAuth(true);
-    console.log(user);
+
 
     return (
         <>

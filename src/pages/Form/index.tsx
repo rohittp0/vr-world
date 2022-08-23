@@ -1,11 +1,14 @@
 import React from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/Header/Header";
+import {useAuth} from "../../api/auth";
 import "../../styles/form.css";
 
 
 const Form = () =>
 {
+   const {user} = useAuth(true);
+    console.log(user);
     return (
         <>
             <Header />

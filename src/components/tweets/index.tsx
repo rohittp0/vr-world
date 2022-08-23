@@ -14,7 +14,7 @@ const TwitterContainer = () =>
             <div className="twitter-embed">
                 <a className="twitter-timeline"
                    data-tweet-limit="3"
-                   href="https://twitter.com/kehsiihba/lists/1559823323525107712?ref_src=twsrc%5Etfw">A Twitter
+                   href="https://twitter.com/kehsiihba/lists/1561594565810737152?ref_src=twsrc%5Etfw">
                    </a>
 
             </div>
