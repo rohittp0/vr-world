@@ -12,7 +12,6 @@ export default function Login()
             <Header/>
             <div>
                 <div className='formcont'>
-
                     <form>
                         <div>
                             <h1 className={"welcome"}>Welcome to XR Lab CUSAT</h1>

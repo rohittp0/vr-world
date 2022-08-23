@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import TextField from "@mui/material/TextField";
 const Resources = () =>
 {
   return (
@@ -14,7 +15,17 @@ const Resources = () =>
       <div className="reshead">
           <h2>Resources</h2>
           <div className="prfdivider"/>
-          <input type="text"  className="resbar" placeholder="Q  Search"/>
+    <TextField label="Search"
+               className="inputRounded" placeholder="Search" variant="outlined"
+               inputProps={{
+                   style: {
+                       width: "80px",
+                       borderColor: "#ff1e56",
+
+                   }
+               }}
+    />
+          {/*<input type="textarea"  className="resbar" placeholder="Q  Search"/>*/}
       </div>
           <button className="dashbutton">
           <a href="#" >Go to Docs</a>
@@ -42,10 +53,9 @@ const Resources = () =>
                           </Typography>
                       </CardContent>
                       <CardActions sx={{backgroundColor:"#f5f5f5"}}>
-                          <Typography variant="body2" color="#FF1E56" fontFamily="Source Sans Pro" fontWeight="bold" fontSize="15px">
-                              Watch
-                          </Typography>
+                          <a href="https://youtu.be/dQw4w9WgXcQ" className="watchbutton">Watch
                           <YouTubeIcon sx={{ color: "red" }} />
+                          </a>
                       </CardActions>
                   </Card>
                   <Card sx={{ maxWidth: 345, borderRadius:"15px"}}>
