@@ -158,18 +158,17 @@
     height: 36px;
     border-color: #ff1e56;
     font-weight: bolder;
-    color:#ff1e56;
     transition: 1s;
     font-size: 11px;
     border-radius: 30px;
-
+    color:#ff1e56;
 }
-.resbar:hover{
+.resbar:focus{
     width: 120px;
     height: 36px;
     border-color: #ff1e56;
     font-weight: bolder;
-    color:#ff1e56;
+    color:black;
     transition: 1s;
     font-size: 11px;
     border-radius: 30px;

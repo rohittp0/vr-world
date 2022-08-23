@@ -63,6 +63,9 @@ export default function Home({hidePath}: { hidePath?: boolean })
                         <Link to="/Contact">
                             <span className="navcont">Contact</span>
                         </Link>
+                         <Link to="/form">
+                         <input type="button" className="applybutton" value="Apply Now"/>
+                           </Link>
                     </div>
                 }
 

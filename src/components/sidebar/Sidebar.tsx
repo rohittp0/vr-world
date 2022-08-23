@@ -27,6 +27,9 @@ export default props =>
                     Contact
                 </a>
             </Link>
+                 <Link to="/form">
+            <input type="button" className="applybutton" value="Apply Now"/>
+             </Link>
         </Menu>
     );
 };
