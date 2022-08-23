@@ -12,6 +12,7 @@ import About from "./pages/about/about";
 import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
 import Login from "./pages/login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/dashboard";
 
 const isProduction =
@@ -39,6 +40,8 @@ function App()
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs/:id" element={<Blog />} />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
       </BrowserRouter>
     </>

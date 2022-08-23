@@ -8,7 +8,6 @@ import "../../styles/form.css";
 const Form = () =>
 {
    const {user} = useAuth(true);
-    console.log(user);
     return (
         <>
             <Header />
