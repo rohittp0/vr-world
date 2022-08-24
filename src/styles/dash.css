@@ -190,6 +190,11 @@
     flex-direction: column;
     padding-top: 30px;
 }
+.editCont{
+    padding-left: 50px;
+    padding-top: 30px;
+    font-family: "Poppins";
+}
 
 h6{
     margin-top: 10px;
@@ -207,6 +212,7 @@ h6{
     font-size: 15px;
     width:15%;
     margin-top: 20px;
+
 
 
 
