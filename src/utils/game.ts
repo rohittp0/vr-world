@@ -2,12 +2,11 @@ import * as THREE from "three";
 import {FBXLoader} from "three/examples/jsm/loaders/FBXLoader";
 import {JoyStick} from "./toon3d";
 
-
 const animationNameMap: Record<string, string> = {
     "Walking" : "walkAnim",
     "Idle" : "idleAnim",
     "Running" : "runAnim",
-    "Turn" : "jumpAnim",
+    "Turn" : "walkAnim",
     "Walking Backwards": "jumpAnim"
 };
 
@@ -21,7 +20,7 @@ export default class Game
     private mixer?: THREE.AnimationMixer;
 
     private clock: THREE.Clock;
-    private motion = {forward: 0, turn: 0};
+    private motion?: {forward: number, turn: number} = {forward: 0, turn: 0};
     private cameras?: {
         wide: THREE.Object3D;
         overhead: THREE.Object3D;
@@ -34,6 +33,7 @@ export default class Game
     private actionTime = 0;
     private actionName = "";
     private animations: Record<string, THREE.AnimationClip> = {};
+    // private readonly texture;
 
     constructor()
     {
@@ -51,7 +51,9 @@ export default class Game
         this.renderer.shadowMap.enabled = true;
         this.container.appendChild(this.renderer.domElement);
 
-        this.model = new FBXLoader().loadAsync("/robo.fbx").then((object) =>
+        const loader = new FBXLoader();
+
+        this.model = loader.loadAsync("/robo.fbx").then((object) =>
         {
             this.mixer = new THREE.AnimationMixer(object);
 
@@ -68,12 +70,28 @@ export default class Game
 
             animationAction.forEach((clip) => this.animations[clip.name] = clip);
 
-            console.log(Object.keys(this.animations));
-
             this.scene.add(object);
 
             return object;
         });
+
+        loader.loadAsync("/texture.fbx").then((object) =>
+        {
+            object.traverse( ( child ) =>
+            {
+                if ( (child as THREE.Mesh).isMesh )
+                {
+                    child.castShadow = false;
+                    child.receiveShadow = true;
+                }
+            } );
+
+            this.scene.add(object);
+
+            object.scale.set(1.8, 1.8, 1.8);
+        } );
+
+
 
         const hLight =  new THREE.HemisphereLight( 0xffffff, 0x444444 );
         hLight.position.set( 0, 200, 0 );
@@ -133,6 +151,7 @@ export default class Game
         else if (forward<-0.3)
         {
             if (this.action !== "Walking Backwards") this.action = "Walking Backwards";
+            return this.motion = undefined;
         }
         else
         {
@@ -142,7 +161,7 @@ export default class Game
                 if (this.action !== "Turn") this.action = "Turn";
             }
             else if (this.action!=="Idle")
-                this.action = "Idle";
+                setTimeout(() => this.action = "Idle", this.action === "Walking Backwards" ? 1000 : 100);
 
         }
 
@@ -157,7 +176,7 @@ export default class Game
 
         this.mixer?.update(dt);
 
-        if (this.action === "Walking" && Date.now() - this.actionTime > 1000 && this.motion.forward > 0)
+        if (this.action === "Walking" && Date.now() - this.actionTime > 1000 && this.motion && this.motion.forward > 0)
             this.action = "Running";
 
         if (this.motion !== undefined)
@@ -177,26 +196,29 @@ export default class Game
 
     async movePlayer(dt: number)
     {
-        if(this.motion.forward + this.motion.turn === 0)
+        if(!this.motion || this.motion.forward + this.motion.turn === 0)
             return;
 
-        const pos = (await this.model).position.clone();
+        const model = (await this.model);
+
+        const pos = model.position.clone();
         const dir = new THREE.Vector3();
 
         pos.y += 60;
 
-        (await this.model).getWorldDirection(dir);
+        model.getWorldDirection(dir);
 
         if (this.motion.forward < 0) dir.negate();
         if (this.motion.forward > 0)
         {
             const speed = this.action === "Running" ? 400 : 150;
-            (await this.model).translateZ(dt * speed);
+            model.translateZ(dt * speed);
+            this.cameras?.active.position.set(model.position.x, model.position.y+300, model.position.z-600);
         }
         else
-            (await this.model).translateZ(-dt * 30);
+            model.translateZ(-dt * 30);
 
-        (await this.model).rotateY(this.motion.turn * dt);
+        model.rotateY(this.motion.turn * dt);
     }
 
     private render()
@@ -243,7 +265,7 @@ export default class Game
 
         const back = new THREE.Object3D();
         back.position.set(0, 300, -600);
-        back.parent = await this.model;
+        // back.parent = await this.model;
 
         const wide = new THREE.Object3D();
         wide.position.set(178, 139, 1665);
