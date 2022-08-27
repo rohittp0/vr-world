@@ -3,11 +3,9 @@ import "./header.css";
 import {Link} from "react-router-dom";
 import Logo from "./assets/logo.png";
 import Sidebar from "../sidebar/Sidebar";
-
 export default function Home({hidePath}: { hidePath?: boolean })
 {
     const [windowSize, setWindowSize] = useState(getWindowSize());
-
     useEffect(() =>
     {
         function handleWindowResize()

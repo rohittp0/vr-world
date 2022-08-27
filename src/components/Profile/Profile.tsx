@@ -11,6 +11,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import {useAuth} from "../../api/auth";
 function createData(name:string,status:string)
 {
  return {name, status};
@@ -21,22 +22,25 @@ const rows = [
 ];
 const Profile = ({stateChanger, ...rest}) =>
 {
-  return (
+    const {user} = useAuth(true);
+
+    return (
       <div className="prfcontainer">
         <div className="profile_hero">
            <div className="profile_head">
-            <Avatar sx={{ width: 140, height: 140, backgroundColor:"red", borderRadius:"10px" }}>H</Avatar>
+            <Avatar sx={{ width: 140, height: 140, backgroundColor:"red", borderRadius:"10px" }}><img src={user.tokens.profile} width={"140"} height={"140"}/></Avatar>
              <div className="profile_info">
                <div className="prfsub">
-                       <Typography  sx={{ fontSize: 35, fontFamily:"Poppins",fontWeight:"Bolder" }}>Name</Typography>
+                       <Typography  sx={{ fontSize: 35, fontFamily:"Poppins",fontWeight:"Bolder" }}>{user.first_name} {user.last_name}</Typography>
                </div>
                 <Typography  sx={{ fontSize: 20, fontFamily:"Poppins", fontWeight:"Bold"}}>Neque porro quisquam est qui dolorem</Typography>
                  <Typography  sx={{ fontSize: 20,fontFamily:"Poppins", fontWeight:"Bold"}}>Neque porro quisquam est qui dolorem</Typography>
                <div className="social_icons">
-                 <span className="cv">CV</span>
-                 <TwitterIcon sx={{color:"#FF1E56",}}/>
-                 <LinkedInIcon sx={{color:"#FF1E56"}}/>
-                 <GitHubIcon sx={{color:"#FF1E56"}}/>
+                   {(user.cv)  &&  <span className="cv">CV</span>}
+                   {(user.twitter)  &&  <TwitterIcon sx={{color:"#FF1E56"}}/>}
+                   {(user.linkedin)  &&  <LinkedInIcon sx={{color:"#FF1E56"}}/>}
+                   {(user.github)  &&  <GitHubIcon sx={{color:"#FF1E56"}}/>}
+
                  </div>
                 </div>
                 </div>
