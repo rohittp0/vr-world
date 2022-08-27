@@ -46,7 +46,6 @@ svg {
 
 .applybutton
 {
-
   padding: 20px;
   background-color:#FF1E56;
   border-radius: 50px;
@@ -63,7 +62,6 @@ svg {
     height: 40px;
     width: 40px;
   }
-
   .navcont {
     padding: 14px;
   }

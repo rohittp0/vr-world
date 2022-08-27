@@ -41,7 +41,7 @@ export function useAuth(needUser = false)
     const [auth, setAuthState] = useState(getAuth());
     const [refresh, setRefreshState] = useState(getAuth());
     const [user, setUserState] = useState<User | null>(getObj("user"));
-
+    let timer = Date.now();
     const refreshState = () =>
     {
         setAuthState(getAuth());
@@ -49,6 +49,48 @@ export function useAuth(needUser = false)
         setUserState(getObj("user"));
     };
 
+    const  refreshToken = async  () =>
+    {
+        const state = getQueryVariable("state");
+        const refresh_token = getRefresh();
+        const kwargs = {
+            client_id,
+            redirect_uri,
+            state,
+            grant_type: "refresh_token",
+            refresh_token: refresh_token,
+            response_type: "token"
+        };
+        await post(`${baseUrl}/auth/o/token/`, kwargs).then((response) =>
+        {
+            setRefresh(response.refresh_token);
+            setAuth(response.access_token);
+            timer = Date.now();
+        });
+    };
+
+    const refresh_user = (tries = 0) =>
+    {
+        const access_token = getAuth();
+
+        post(`${baseUrl}/auth/users/me/`, {}, {"Authorization": `Bearer ${access_token}`}).then((response) =>
+        {
+            setObj("user", response.results[0]);
+        }).catch((error) =>
+        {
+            console.log(error);
+            if (tries < 1)
+            {
+                refreshToken().then(() =>
+                {
+                    refresh_user(1);
+                });
+            }
+
+        });
+
+
+    };
     const performAuth = () =>
     {
         const state = "st" + makeid(5);
@@ -69,6 +111,7 @@ export function useAuth(needUser = false)
 
         localStorage.setItem(state, pathname + window.location.search);
         window.location.href = `${baseUrl}/auth/o/authorize/?` + new URLSearchParams(kwargs);
+        refresh_user();
     };
 
     const refreshAuth = async () =>
@@ -91,7 +134,7 @@ export function useAuth(needUser = false)
         setObj("timer", Date.now());
 
         refreshState();
-
+        refresh_user();
         return auth;
     };
 

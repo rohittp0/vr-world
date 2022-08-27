@@ -4,21 +4,19 @@ import Header from "../../components/Header/Header";
 import {useAuth} from "../../api/auth";
 import "../../styles/form.css";
 
-
 const Form = () =>
 {
-   const {user} = useAuth(true);
+   const {user,refreshAuth} = useAuth(true);
+   console.log(user,refreshAuth())
     return (
         <>
             <Header />
             <div className="main">
                 <div className="head">
-
-
-                    <iframe id="table" className="airtable-embed"
-    src="https://airtable.com/embed/shrxVmF8Ve1oQS1wM?backgroundColor=red"
-    frameBorder="0" onmousewheel="" width="100%" height="500"
-    />
+                   <iframe id="table" className="airtable-embed"
+                    src="https://airtable.com/embed/shrxVmF8Ve1oQS1wM?backgroundColor=red"
+                    frameBorder="0" width="100%" height="500"
+                    />
                 </div>
             </div>
             <Footer />
