@@ -2,6 +2,7 @@ const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const buildFolder = path.resolve(__dirname, "..", "./build");
 
@@ -74,6 +75,11 @@ module.exports = (env) => ({
         topLevelAwait: true
     },
     plugins: [
+        new CopyPlugin({
+            patterns: [
+                {from: path.resolve(__dirname, "./public")},
+            ],
+        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, "..", "public/index.html"),
             title: "XR Lab",
