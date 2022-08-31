@@ -36,6 +36,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {from: path.resolve(__dirname, "..", "public/robots.txt")},
+                {from: path.resolve(__dirname, "..", "public/robo.fbx")},
                 {
                     from: path.resolve(__dirname, "..", "public/.well-known/"),
                     to: path.resolve(__dirname, "..", "./build", ".well-known")
