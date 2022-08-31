@@ -6,9 +6,20 @@
   margin: 20px 0;
   /* margin-top: -100px; */
 }
-.main h2 {
+.main,.articles h2,h4 {
   font-weight: bold;
 }
+.articles p{
+  font-size:15px;
+}
+.articles {
+  padding: 0 300px;
+  display:flex;
+  justify-content: space-around;
+}
+.news,.tweets{
+  width:50%;
+  }
 
 .description {
   font-weight: 700;
@@ -20,6 +31,7 @@
   flex-wrap: wrap;
 }
 .head {
+  margin-left: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,12 +58,13 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .main {
+  .main,.articles{
     padding: 0 100px;
   }
+
 }
 @media only screen and (max-width: 700px) {
-  .main {
+  .main,.articles {
     padding: 0 50px;
   }
   .car {
@@ -66,8 +79,21 @@
     margin: 16px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .divider {
     width: 30%;
   }
+  .articles {
+    flex-direction: column;
+    justify-content: center;
+    padding:20px;
+  }
+  .news{
+    text-align: center;
+    width: 100%;
+  }
+  .tweets{
+    width: 100%;
+  }
+
 }

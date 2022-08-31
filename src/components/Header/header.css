@@ -1,3 +1,4 @@
+
 .nav {
   z-index: 5000;
   top: 0;
@@ -42,13 +43,25 @@ svg {
   float: left;
   margin-left: 7%;
 }
+
+.applybutton
+{
+  padding: 20px;
+  background-color:#FF1E56;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  width:auto;
+}
 @media only screen and (min-width: 766px) and (max-width: 864px) {
   .logo {
     margin-left: 0%;
     height: 40px;
     width: 40px;
   }
-
   .navcont {
     padding: 14px;
   }

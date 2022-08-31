@@ -1,14 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .formcont
 {
+    display:flex;
+    justify-content: center;
     text-align: center;
-  position: absolute;
-    margin: auto;
-  align-items: center;
-    margin-right: 100px;
-    padding-bottom: 50px;
+     align-items: center;
+
 }
 .welcome
 {
+    text-align: center;
     font-family: Source Sans Pro;
     font-weight: bolder;
 }
@@ -16,4 +17,51 @@
 {
     font-family: Source Sans Pro;
     text-align: left;
+
+}
+.divider {
+    padding: 0 30px;
+    background-color: #32323226;
+    height: 3px;
+    width: 83%;
+    margin-top: 17px;
+}
+.sub-divider{
+    padding: 0 30px;
+    background-color: #FF1E56;
+    height: 3px;
+    width: 50%;
+    margin-top: 17px;
+    margin-bottom: 10px;
+}
+.sub{
+    font-size:0.8rem;
+    color:#757575;
+}
+.subcont{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+input{
+    padding:10px;
+    width: 100%;
+    border:1px solid #E6E6E6;
+    border-radius:15px;
+}
+sup{
+    color:#ff1e56;
+}
+.button {
+    background-color:  #FF1E56;
+    border-radius: 15px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width:90%;
 }

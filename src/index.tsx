@@ -2,7 +2,7 @@ import "./bootstrap.css";
 
 import { Workbox } from "workbox-window";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Form from "./pages/Form";
 import HandleToken from "./pages/HandleToken";
 import Home from "./pages/Home";
 import Members from "./pages/members/index";
@@ -12,6 +12,8 @@ import About from "./pages/about/about";
 import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
 import Login from "./pages/login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/dashboard";
 
 const isProduction =
   location.hostname !== "localhost" &&
@@ -34,8 +36,12 @@ function App()
           <Route path="/members" element={<Members />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/blogs/:id" element={<Blog />} />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
       </BrowserRouter>
     </>

@@ -12,31 +12,35 @@ export default function Login()
             <Header/>
             <div>
                 <div className='formcont'>
-
                     <form>
                         <div>
                             <h1 className={"welcome"}>Welcome to XR Lab CUSAT</h1>
                             <div className={"container"}>
                             <h4 >Login to continue</h4>
-
-                            <input type="email" placeholder="Login with your CUSAT email ID"/>
-                            <p className="text-muted">
-                                We&apos;ll never share your email with anyone else.
+                                <div className="divider"></div>
+                                <p className="sub">
+                                Login with your CUSAT email ID
                             </p>
 
                         </div>
 
-                        <div className="mb-3">
-                            <Label>Password</Label>
-                            <input type="password" placeholder="Password"/>
+                        <div className="subcont">
+                            <label>Email<sup>*</sup></label>
+                            <div className="sub-divider"></div>
+                            <input type="email" placeholder="abc@ug.cusat.ac.in"/>
                         </div>
-                        <div className="mb-3">
-                            <input type="checkbox" value="Check me out"/>
-                        </div>
+                            <div className="subcont">
+                            <label >Password</label>
+                                <div className="sub-divider"></div>
+
+                                <input type="password" placeholder="Password"/>
                             </div>
-                        <Button type="submit">
-                            Submit
-                        </Button>
+
+
+                            </div>
+
+                               <input type="button" className="button" value="Log in"/>
+
                     </form>
                 </div>
             </div>

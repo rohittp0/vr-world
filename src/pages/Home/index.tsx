@@ -2,7 +2,7 @@ import Footer from "../../components/footer/Footer";
 import Button from "@mui/material/Button";
 import "../../styles/home.css";
 import Header from "../../components/Header/Header";
-
+import TwitterContainer from "../../components/tweets";
 import Game from "../../utils/game";
 import React, {useEffect, useState} from "react";
 import {Blogs, EventObject, Events} from "../../api/model";
@@ -93,6 +93,33 @@ export default function Home()
                             </a>
                         </div>
                     )}
+                </div>
+            </div>
+            <div className="articles">
+                <div className="news">
+                <div className="head">
+                    <h2>Lab News</h2>
+                    <span className="divider"/>
+                </div>
+                <div className="content">
+                    <h5>26 JUNE 2022</h5>
+                    <h4>
+                        Thank you, Trebuchet, for the kind support of our research </h4>
+                    <p>computer-supported face-to-face communication, and that will change everything.  At the Futu ....<a href="#" style={{color: "#FF1E56"}}
+                       className="card-link ms-2">
+                        ...read more
+                    </a>
+                    </p>
+                </div>
+                </div>
+                <div className="tweets">
+                <div className="head">
+                    <h2>Tweets</h2>
+                    <span className="divider"/>
+                </div>
+                    <div className="content">
+                        <TwitterContainer/>
+                    </div>
                 </div>
             </div>
             <Footer/>
