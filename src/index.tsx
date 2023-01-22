@@ -1,52 +1,49 @@
-import "./bootstrap.css";
+import "./index.css";
 
-import { Workbox } from "workbox-window";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Form from "./pages/Form";
-import HandleToken from "./pages/HandleToken";
-import Home from "./pages/Home";
-import Members from "./pages/members/index";
-import { HandleAppState } from "./components/HandleAppState";
-import Contact from "./pages/contactUs/ContactUs";
-import About from "./pages/about/about";
-import Blog from "./pages/Blog";
 import {createRoot} from "react-dom/client";
-import Login from "./pages/login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/dashboard";
+import React, {useEffect, useState} from "react";
+import Game from "./utils/game";
+import {Button} from "@mui/material";
 
-const isProduction =
-  location.hostname !== "localhost" &&
-  location.protocol !== "http:" &&
-  "serviceWorker" in navigator;
 
-const wb = new Workbox("/sw.js");
-
-if (isProduction) wb.register().catch(console.error);
-
-function App()
+function initWebXr(canvas: HTMLCanvasElement)
 {
-  return (
-    <>
-      {isProduction && <HandleAppState wb={wb} />}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/set_token" element={<HandleToken />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/members" element={<Members />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blogs/:id" element={<Blog />} />
-          <Route path="/register" element={<Register />} />
+    return canvas;
+}
 
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+function Home()
+{
+    const root3 = document.getElementById("3root");
+
+    const [running, setRunning] = useState(false);
+    const [game, setGame] = useState<Game>();
+
+    useEffect(() =>
+    {
+        setGame(new Game());
+
+        if (root3)
+            if (root3.children.length > 1)
+                root3.removeChild(root3.children[0]);
+
+        return () =>
+        {
+            if (root3)
+                root3.innerHTML = "";
+        };
+    }, [root3]);
+
+
+    return (
+        <>
+            {!running && game && <Button onClick={() => initWebXr(game.canvas)}>
+                Start Mapping
+            </Button>}
+            <div id="3root">
+            </div>
+        </>
+    );
 }
 
 const render = createRoot(document.getElementById("root") as HTMLDivElement);
-render.render(<App />);
+render.render(<Home/>);
