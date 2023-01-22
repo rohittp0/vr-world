@@ -38,9 +38,13 @@ function getRenderer(canvas: HTMLCanvasElement, gl: WebGLRenderingContext)
         alpha: true,
         preserveDrawingBuffer: true,
         canvas: canvas,
-        context: gl
+        context: gl,
+        antialias: true,
     });
     renderer.autoClear = false;
+
+    renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+    renderer.shadowMap.enabled = true;
 
     return renderer;
 }
@@ -50,7 +54,7 @@ export default function Home()
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [running, setRunning] = useState(false);
 
-    const camera = new THREE.PerspectiveCamera();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 5000 );
     const scene = getScene();
     const loader = new GLTFLoader();
 
@@ -58,19 +62,55 @@ export default function Home()
     let gl: WebGLRenderingContext | WebGL2RenderingContext | null;
     let renderer: THREE.WebGLRenderer;
 
+    camera.position.set(112, 100, 600);
 
     loader.load("/aminity.glb", (gltf) =>
     {
         const model = gltf.scene;
 
-        model.scale.set(0.1, 0.1, 0.1);
-        model.position.set(0, 0, 0);
+        model.scale.set(0.3, 0.3, 0.3);
+        model.position.set(0, 0, -10);
 
         scene.add(model);
     });
 
+    const hLight =  new THREE.HemisphereLight( 0xffffff, 0x444444 );
 
-    camera.matrixAutoUpdate = false;
+    hLight.position.set( 0, 200, 0 );
+    scene.add(hLight);
+
+    const shadowSize = 200;
+
+    const light = new THREE.DirectionalLight( 0xffffff );
+    light.position.set( 0, 200, 100 );
+    light.castShadow = true;
+    light.shadow.camera.top = shadowSize;
+    light.shadow.camera.bottom = -shadowSize;
+    light.shadow.camera.left = -shadowSize;
+    light.shadow.camera.right = shadowSize;
+    scene.add( light );
+
+    const mesh = new THREE.Mesh(
+        new THREE.PlaneBufferGeometry( 10000, 10000 ),
+        new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
+
+    mesh.rotation.x = - Math.PI / 2;
+    mesh.receiveShadow = true;
+
+    scene.add( mesh );
+
+    const grid = new THREE.GridHelper( 5000, 40, 0x000000, 0x000000 );
+
+    if (grid.material instanceof THREE.Material)
+    {
+        grid.material.opacity = 0.2;
+        grid.material.transparent = true;
+    }
+
+    scene.add( grid );
+
+    scene.fog = new THREE.Fog( 0xa0a0a0, 1000, 5000 );
+
 
     async function initWebXr(canvas: HTMLCanvasElement)
     {
@@ -89,6 +129,8 @@ export default function Home()
         session.requestAnimationFrame(onXRFrame as FrameRequestCallback);
         setRunning(true);
     }
+
+    camera.matrixAutoUpdate = false;
 
     function onXRFrame(t: DOMHighResTimeStamp, frame)
     {
