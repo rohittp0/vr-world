@@ -4,7 +4,6 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
 export default class Game
 {
-    readonly canvas: HTMLCanvasElement;
     private readonly container: HTMLDivElement;
     private readonly scene: THREE.Scene;
     private readonly camera: THREE.PerspectiveCamera;
@@ -20,10 +19,13 @@ export default class Game
         active: THREE.Object3D;
     };
     private activeCamera?: THREE.Object3D;
+    running: boolean;
     // private readonly texture;
 
     constructor()
     {
+        this.running = false;
+
         this.container = document.getElementById("3root") as HTMLDivElement;
         this.container.style.height = "100%";
 
@@ -36,12 +38,11 @@ export default class Game
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setSize( window.innerWidth, window.innerHeight );
         this.renderer.shadowMap.enabled = true;
+        this.renderer.xr.enabled = true;
+
         this.container.appendChild(this.renderer.domElement);
 
-        this.canvas = this.renderer.domElement;
-
         const loader = new GLTFLoader();
-
 
         loader.loadAsync("/aminity.glb").then((object) =>
         {
@@ -88,21 +89,29 @@ export default class Game
             this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(window.innerWidth, window.innerHeight);
-            this.render();
         });
 
         this.scene.add(new THREE.AxesHelper());
         this.scene.fog = new THREE.Fog( 0xa0a0a0, 1000, 5000 );
 
-        this.createCameras().then(() => this.render());
+        this.createCameras().then();
     }
-
-
-
-    private render()
+    async initWebXr()
     {
-        this.renderer.render(this.scene, this.camera);
-        requestAnimationFrame(() => this.render());
+        if(!navigator.xr)
+            throw new Error("WebXR not supported");
+
+        const sessionInit = { optionalFeatures: [ "local-floor", "bounded-floor", "hand-tracking", "layers" ] };
+        const session = await navigator.xr.requestSession( "immersive-vr", sessionInit );
+
+        session.addEventListener("end", () => this.running = false);
+
+        await this.renderer.xr.setSession( session );
+
+        this.running = true;
+
+        this.renderer.setAnimationLoop( () =>
+            this.renderer.render( this.scene, this.camera ));
     }
 
     async createCameras()
