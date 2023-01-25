@@ -48,7 +48,6 @@ export default class Game
         {
 
             this.scene.add(object.scene);
-
             object.scene.scale.set(15, 15, 15);
         } );
 
@@ -133,6 +132,6 @@ export default class Game
         collect.position.set(40, 82, 94);
 
         this.cameras = { front, back, wide, overhead, collect, active: back };
-        this.activeCamera = this.cameras.back;
+        this.activeCamera = this.cameras.wide;
     }
 }
